@@ -82,7 +82,7 @@
   .thumb-wrap { text-align: center; margin: 6px 0 4px; }
   .thumb-wrap img { max-width: 560px; width: 100%; border-radius: 12px; border: 2px solid #d7e8f5; background: #fff; }
   .thumb-wrap .cap { font-size: 12px; color: #7b97ab; margin-top: 3px; }
-  .skillcard .cthumb { width: 86px; height: 54px; object-fit: cover; border-radius: 9px; border: 1.5px solid #d7e8f5; flex: none; }
+  .skillcard .cthumb { width: 100px; height: 62px; object-fit: cover; border-radius: 9px; border: 1.5px solid #d7e8f5; flex: none; }
   .detail .lvline { color: #7b97ab; font-size: 14.5px; margin: 2px 0 10px; }
   .hardnote {
     background: #fff3e2; border: 2px solid #f2b25c; color: #9a5b12; border-radius: 12px;
@@ -123,6 +123,41 @@
   .guide .bubble .who { font-size: 11.5px; color: #7b97ab; font-weight: 700; }
   .guide img { width: 64px; height: 64px; border-radius: 50%; background: #fff; border: 2px solid #bcd9ef; object-fit: cover; }
   .hidden { display: none !important; }
+
+  .watchnote { background: #fff6d8; border: 2px solid #ecd27a; color: #7a5c00; border-radius: 12px; padding: 10px 14px; font-weight: 700; margin: 10px 0; }
+  .nextchips { display: flex; flex-wrap: wrap; gap: 10px; }
+  .nextchip { display: inline-flex; align-items: center; gap: 8px; min-height: 52px; padding: 8px 14px; border-radius: 999px; border: 2px solid #1d6fb8; background: #eaf4fc; color: #14507f; font-weight: 800; font-size: 16px; cursor: pointer; font-family: inherit; }
+  .nextchip img { width: 52px; height: 34px; object-fit: cover; border-radius: 8px; }
+  .nexnote { font-size: 13px; color: #7b97ab; margin: 6px 0 0; }
+  @media (min-width: 900px) {
+    #skillList { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .dgrid { display: grid; grid-template-columns: 1.15fr .85fr; gap: 6px 22px; align-items: start; }
+  }
+  .guide.mini .bubble { display: none; }
+  .guide.mini img { width: 54px; height: 54px; border-width: 2px; }
+  #guideMini { position: absolute; top: -8px; right: -2px; width: 28px; height: 28px; border-radius: 50%; border: 2px solid #fff; background: #7b97ab; color: #fff; font-weight: 900; cursor: pointer; line-height: 1; z-index: 3; }
+  .guide.mini #guideMini { display: none; }
+  .slotrow { border: 2px solid #d7e8f5; border-radius: 14px; padding: 12px 14px; margin: 10px 0; background: #fbfdff; }
+  .slotlabel { font-weight: 900; color: #1d6fb8; font-size: 17px; margin-bottom: 8px; }
+  .slotpick, .candbtn { display: flex; align-items: center; gap: 12px; width: 100%; min-height: 64px; border-radius: 12px; border: 2px dashed #9fc6e8; background: #fff; padding: 8px 12px; font-family: inherit; font-size: 17px; font-weight: 800; color: #14507f; cursor: pointer; text-align: left; }
+  .slotpick.filled { border-style: solid; border-color: #1d6fb8; background: #eaf4fc; }
+  .slotpick img, .candbtn img { width: 84px; height: 52px; object-fit: cover; border-radius: 8px; flex: none; }
+  .candgrid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 10px; }
+  @media (max-width: 640px) { .candgrid { grid-template-columns: 1fr; } }
+  .candbtn { border-style: solid; border-color: #d7e8f5; min-height: 60px; }
+  .candbtn.sel { outline: 3px solid #f0a832; }
+  .routine-actions { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 14px; }
+  .presentbtn { flex: 1; min-height: 60px; border-radius: 999px; border: none; background: #e8873a; color: #fff; font-size: 19px; font-weight: 900; cursor: pointer; font-family: inherit; padding: 12px; }
+  .presentbtn:disabled { background: #c9d6df; color: #6d8598; cursor: default; }
+  .clearbtn { min-height: 60px; border-radius: 999px; border: 2px solid #9fc6e8; background: #fff; color: #14507f; font-weight: 800; padding: 12px 18px; cursor: pointer; font-family: inherit; }
+  .psteps { display: flex; gap: 10px; align-items: stretch; justify-content: center; }
+  .pstep { flex: 1; min-width: 0; text-align: center; background: #f4fafd; border: 2px solid #d7e8f5; border-radius: 16px; padding: 14px; }
+  .pstep .no { display: inline-block; background: #1d6fb8; color: #fff; border-radius: 999px; padding: 2px 14px; font-weight: 900; margin-bottom: 8px; }
+  .pstep img { width: 100%; max-height: 190px; object-fit: cover; border-radius: 10px; }
+  .pstep .pn { font-size: 24px; font-weight: 900; color: #14507f; margin-top: 8px; }
+  .parrow { align-self: center; font-size: 30px; color: #1d6fb8; font-weight: 900; }
+  @media (max-width: 760px) { .psteps { flex-direction: column; } .parrow { transform: rotate(90deg); } }
+  .present-title { text-align: center; font-size: 26px; color: #1d6fb8; margin: 4px 0 12px; }
 </style>
 </head>
 <body>
@@ -139,7 +174,7 @@
   <!-- トップ画面 -->
   <section id="screen-home">
     <div class="card hero">
-      <img src="assets/hero.webp" alt="鉄棒にぶら下がる子と、マットを押さえる友だち、見守る友だち">
+      <img src="assets/hero.webp" alt="ナビキャラの鉄棒の場面イラスト">
       <p>鉄棒の技を、自分の力に合わせて選べる教材です。技のポイントを知って、公式のお手本動画を見て、安全に練習しましょう。</p>
     </div>
 
@@ -194,6 +229,17 @@
     <div class="card detail" id="detailCard"></div>
   </section>
 
+
+  <section id="screen-routine" class="hidden">
+    <div class="card detail" id="routineCard"></div>
+    <button class="backbtn" id="backFromRoutine" type="button">← 技を組み合わせよう にもどる</button>
+  </section>
+
+  <section id="screen-present" class="hidden">
+    <div class="card detail" id="presentCard"></div>
+    <button class="backbtn" id="backFromPresent" type="button">← 連続わざづくり にもどる</button>
+  </section>
+
   <footer class="src">
     出典：スポーツ庁「小学校体育の動画資料 ～器械・器具を使っての運動遊び、器械運動～」「小学校体育（運動領域）指導の手引」／ NHK for School「はりきり体育ノ介」／ 滋賀県教育委員会「鉄棒を使った運動遊び」。技のサムネイル画像は、スポーツ庁「小学校体育の動画資料」のイラスト部分を切り取って表示しています。動画と資料は、各公式ページへのリンクで開きます。このページの説明文はTT-senseiのオリジナルです。記録は、この端末の中にだけ保存されます。
   </footer>
@@ -202,6 +248,7 @@
 <div class="guide" id="guide">
   <div class="bubble"><div class="who" id="guideWho"></div><div id="guideLine"></div></div>
   <img id="guideFace" alt="ナビキャラ">
+  <button type="button" id="guideMini" aria-label="ガイドを小さくする">×</button>
 </div>
 
 <script>
@@ -244,17 +291,17 @@ var SKILLS = [
     points: ["鉄棒におなかをのせて、両足を後ろにまっすぐ伸ばす。干したふとんのような形。", "手は鉄棒をしっかりにぎったまま、絶対に離さない。"],
     practice: "まず、おなかをのせるだけから。慣れてきたら、片足ずつ浮かせてみよう。",
     links: [L_DOGA_LOW, L_SHIGA] },
-  { id: "dangomushi", cat: "nareyou", name: "ダンゴ虫", level: 2, hard: false,
+  { id: "dangomushi", cat: "nareyou", name: "ダンゴ虫", level: 2, hard: false, watch: true,
     points: ["両手と両足で鉄棒にぶら下がり、ひざを曲げて体を小さく丸める。", "逆さの感覚に慣れるための技。逆さの姿勢では、手を絶対に離さない。"],
     practice: "足をかけるだけ、両足をかけて短い時間キープ、の順に少しずつ進めよう。",
     links: [L_DOGA_LOW, L_SHIGA] },
-  { id: "asinuki", cat: "nareyou", name: "足ぬき回り", level: 2, hard: false,
+  { id: "asinuki", cat: "nareyou", name: "足ぬき回り", level: 2, hard: false, watch: true,
     points: ["ぶら下がったまま、両足を手の間から前に抜いて、後ろへ回して下りる。", "足をそろえて抜くと、スムーズに回れる。"],
     practice: "片足ずつ抜く練習から始めよう。「抜く→戻す」を繰り返すと慣れてくる。",
     links: [L_DOGA_LOW, L_SHIGA] },
   { id: "maemawari", cat: "kihon", name: "前回りおり", level: 2, hard: false,
     points: ["支えた姿勢から、おなかを鉄棒につけたまま、体を前に傾けて回る。", "あごを引いて、背中を丸めるイメージで回ると下りやすい。"],
-    practice: "ゆっくり前に傾ける練習から。先生や友だちに支えてもらいながら回ってみよう。",
+    practice: "ゆっくり前に傾ける練習から。先生に見てもらいながら回ってみよう（補助のしかたは、先生に確認しよう）。",
     links: [L_DOGA_MID, L_DOGA_HIGH] },
   { id: "ushirofuri", cat: "kihon", name: "後ろ振りおり", level: 2, hard: false,
     points: ["支えた姿勢から、体を後ろに振って下りる技。", "手を離すのは、体が後ろに振れてから。着地はひざを曲げて、静かに。"],
@@ -266,7 +313,7 @@ var SKILLS = [
     links: [L_DOGA_MID, L_DOGA_HIGH] },
   { id: "hizakake", cat: "kihon", name: "ひざかけふり上がり", level: 3, hard: false,
     points: ["片方のひざを鉄棒にかけ、もう一方の足の振りと体の勢いで上がる。", "かけるひざは、鉄棒の上にしっかり置く。"],
-    practice: "ひざをかけて前後に振るだけの練習から。振りを大きくして、補助してもらいながら上がってみよう。",
+    practice: "ひざをかけて前後に振るだけの練習から。補助のしかたを先生に確認してから、振りを大きくして上がってみよう。",
     links: [L_NHK_HIZA, L_DOGA_MID, L_DOGA_HIGH] },
   { id: "sakaagari", cat: "chousen", name: "逆上がり", level: 3, hard: true,
     points: ["鉄棒をおなかに引き寄せたまま、足を真上に蹴り上げる。", "腕が伸びきると回れない。ひじを曲げて、鉄棒を体に近づけたままにする。"],
@@ -313,6 +360,14 @@ var OVERRIDE = {
   kouhou: { thumb: "kouhou", links: [YT("8-QTzlIKTNo", NOTE_MID), L_DOGA_MID] },
   katahiza: { thumb: "katahiza", links: [YT("JU0biAk4kmA", NOTE_MID + "（前方かたひざかけ回転）"), YT("0_vujGO3_SU", NOTE_MID + "（後方かたひざかけ回転）")] }
 };
+
+function skillById(id) { return SKILLS.filter(function (x) { return x.id === id; })[0]; }
+var NEXT = {
+  burasagari: ["tsubame", "futonhoshi"], tsubame: ["maemawari"], futonhoshi: ["dangomushi"],
+  dangomushi: ["asinuki"], asinuki: ["maemawari"], maemawari: ["kakaekomi", "ushirofuri"],
+  ushirofuri: ["kouhou"], kakaekomi: ["zenpou"], hizakake: ["sakaagari"], sakaagari: ["katahiza"],
+  zenpou: ["kouhou"], kouhou: ["katahiza"], katahiza: []
+};
 SKILLS.forEach(function (s) { var o = OVERRIDE[s.id]; if (o) { s.thumb = o.thumb; s.links = o.links; } });
 
 var STORE_KEY = "tetsubouChallenge.v1";
@@ -353,7 +408,7 @@ function countedSkills() { return SKILLS.filter(function (s) { return !s.activit
 function doneCount() { return countedSkills().filter(function (s) { return store.done[s.id]; }).length; }
 
 function show(screen) {
-  ["screen-home", "screen-list", "screen-detail"].forEach(function (id) { $(id).classList.add("hidden"); });
+  ["screen-home", "screen-list", "screen-detail", "screen-routine", "screen-present"].forEach(function (id) { $(id).classList.add("hidden"); });
   $(screen).classList.remove("hidden");
   window.scrollTo(0, 0);
 }
@@ -396,7 +451,76 @@ function openCat(catId) {
     b.addEventListener("click", function () { beep("decide"); openSkill(s.id); });
     box.appendChild(b);
   });
+  if (catId === "kumiawase") {
+    var rb = document.createElement("button");
+    rb.type = "button"; rb.className = "skillcard";
+    rb.innerHTML = '<span class="nm">⭐ 連続わざをつくろう</span><span class="lv">発表用</span>';
+    rb.addEventListener("click", function () { beep("decide"); openRoutine(); });
+    box.appendChild(rb);
+  }
   show("screen-list");
+}
+
+
+var ROUTINE_KEY = "tetsubouChallenge.routine.v1";
+var SLOTS = [
+  { key: "nobori", label: "① のぼり方", cand: ["tsubame", "hizakake", "sakaagari", "asinuki"] },
+  { key: "naka", label: "② なかの技", cand: ["futonhoshi", "dangomushi", "kakaekomi", "zenpou", "kouhou", "katahiza"] },
+  { key: "oriru", label: "③ おり方", cand: ["maemawari", "ushirofuri"] }
+];
+var routine = loadRoutine();
+var pickingSlot = null;
+function loadRoutine() {
+  try { var r = JSON.parse(localStorage.getItem(ROUTINE_KEY)); if (r) return { nobori: r.nobori || null, naka: r.naka || null, oriru: r.oriru || null }; } catch (e) {}
+  return { nobori: null, naka: null, oriru: null };
+}
+function saveRoutine() { try { localStorage.setItem(ROUTINE_KEY, JSON.stringify(routine)); } catch (e) {} }
+function openRoutine() { pickingSlot = null; renderRoutine(); show("screen-routine"); }
+function renderRoutine() {
+  var html = "<h2>連続わざをつくろう</h2>";
+  html += '<p class="sub">「のぼり方」「なかの技」「おり方」を1つずつ選ぶと、発表用の連続わざができるよ。</p>';
+  SLOTS.forEach(function (slot) {
+    var cur = routine[slot.key] ? skillById(routine[slot.key]) : null;
+    html += '<div class="slotrow"><div class="slotlabel">' + slot.label + "</div>";
+    html += '<button type="button" class="slotpick' + (cur ? " filled" : "") + '" data-slot="' + slot.key + '">' +
+      (cur ? (cur.thumb ? '<img src="assets/thumbs/' + cur.thumb + '.webp" alt="">' : "") + cur.name + "（タップでかえる）" : "技をえらぶ") + "</button>";
+    if (pickingSlot === slot.key) {
+      html += '<div class="candgrid">';
+      slot.cand.forEach(function (id) {
+        var t = skillById(id);
+        html += '<button type="button" class="candbtn' + (routine[slot.key] === id ? " sel" : "") + '" data-cand="' + id + '">' +
+          (t.thumb ? '<img src="assets/thumbs/' + t.thumb + '.webp" alt="">' : "") + t.name + "</button>";
+      });
+      html += "</div>";
+    }
+    html += "</div>";
+  });
+  var all = routine.nobori && routine.naka && routine.oriru;
+  html += '<div class="routine-actions"><button type="button" class="presentbtn" id="presentBtn"' + (all ? "" : " disabled") + '>発表する</button><button type="button" class="clearbtn" id="routineClear">全部クリア</button></div>';
+  if (!all) html += '<p class="nexnote">3つ選ぶと、発表できるよ。</p>';
+  $("routineCard").innerHTML = html;
+  $("routineCard").querySelectorAll(".slotpick").forEach(function (b) {
+    b.addEventListener("click", function () { beep("click"); pickingSlot = (pickingSlot === b.dataset.slot) ? null : b.dataset.slot; renderRoutine(); });
+  });
+  $("routineCard").querySelectorAll(".candbtn").forEach(function (b) {
+    b.addEventListener("click", function () { beep("decide"); routine[pickingSlot] = b.dataset.cand; saveRoutine(); pickingSlot = null; renderRoutine(); });
+  });
+  $("presentBtn").addEventListener("click", function () { if (routine.nobori && routine.naka && routine.oriru) { beep("start"); openPresent(); } });
+  $("routineClear").addEventListener("click", function () { beep("click"); routine = { nobori: null, naka: null, oriru: null }; saveRoutine(); pickingSlot = null; renderRoutine(); });
+}
+function openPresent() {
+  var ids = [routine.nobori, routine.naka, routine.oriru];
+  var labels = ["のぼり方", "なかの技", "おり方"];
+  var html = '<h2 class="present-title">わたしの連続わざ</h2><div class="psteps">';
+  ids.forEach(function (id, i) {
+    var t = skillById(id);
+    if (i) html += '<div class="parrow">→</div>';
+    html += '<div class="pstep"><span class="no">' + (i + 1) + " " + labels[i] + "</span>" +
+      (t.thumb ? '<img src="assets/thumbs/' + t.thumb + '.webp" alt="">' : "") + '<div class="pn">' + t.name + "</div></div>";
+  });
+  html += '</div><p class="sub" style="text-align:center;margin-top:12px">この順番で練習して、発表しよう。難しい技は、先生や大人の補助のもとで。</p>';
+  $("presentCard").innerHTML = html;
+  show("screen-present");
 }
 
 function openSkill(skillId) {
@@ -407,11 +531,18 @@ function openSkill(skillId) {
   html += '<div class="lvline">難易度の目安：' + levelDots(s.level) + "</div>";
   if (s.thumb) html += '<div class="thumb-wrap"><img src="assets/thumbs/' + s.thumb + '.webp" alt="' + s.name + 'の動きのイラスト"><div class="cap">スポーツ庁「小学校体育の動画資料」のイラストより</div></div>';
   if (s.hard) html += '<div class="hardnote">⚠ この技は、先生や大人の見ているところで、補助をしてもらって練習しましょう。一人で無理に挑戦しないこと。</div>';
-  html += "<h3>できるポイント</h3><ul>";
+  if (s.watch) html += '<div class="watchnote">👀 この技は、先生に見てもらってから練習しよう。</div>';
+  html += '<div class="dgrid"><div class="dmain"><h3>できるポイント</h3><ul>';
   s.points.forEach(function (pt) { html += "<li>" + pt + "</li>"; });
   html += "</ul>";
   html += "<h3>できないときの練習方法</h3><ul><li>" + s.practice + "</li></ul>";
-  html += "<h3>お手本の動画・資料（公式ページ）</h3>";
+  var nx = NEXT[s.id] || [];
+  if (nx.length) {
+    html += "<h3>つぎに挑戦できる技</h3><div class=\"nextchips\">";
+    nx.forEach(function (id) { var t = skillById(id); html += '<button type="button" class="nextchip" data-next="' + id + '">' + (t.thumb ? '<img src="assets/thumbs/' + t.thumb + '.webp" alt="">' : "") + t.name + "</button>"; });
+    html += "</div><p class=\"nexnote\">順番は決まっていないよ。やってみたい技を選んでね。</p>";
+  }
+  html += '</div><div class="dside"><h3>お手本の動画・資料（公式ページ）</h3>';
   s.links.forEach(function (l) {
     html += '<a class="linkbtn ' + l.kind + '" href="' + l.url + '" target="_blank" rel="noopener">▶ ' + l.label + "<small>" + l.note + "</small></a>";
   });
@@ -419,8 +550,11 @@ function openSkill(skillId) {
   html += '<div class="checkarea">' +
     '<button type="button" class="bigcheck' + (store.done[s.id] ? " on" : "") + '" id="doneBtn">' + (store.done[s.id] ? "⭐ できた！（記録ずみ）" : "☆ できた！を記録する") + "</button>" +
     '<button type="button" class="countbtn" id="countBtn">今日も練習した（＋1）</button></div>';
-  html += '<div class="countnum">練習した回数：' + (store.counts[s.id] || 0) + " 回</div>";
+  html += '<div class="countnum">練習した回数：' + (store.counts[s.id] || 0) + " 回</div></div></div>";
   $("detailCard").innerHTML = html;
+  $("detailCard").querySelectorAll(".nextchip").forEach(function (b) {
+    b.addEventListener("click", function () { beep("decide"); openSkill(b.dataset.next); });
+  });
   $("doneBtn").addEventListener("click", function () {
     if (store.done[s.id]) { delete store.done[s.id]; beep("click"); }
     else { store.done[s.id] = true; beep("correct"); }
@@ -435,6 +569,8 @@ function openSkill(skillId) {
 
 $("backHome1").addEventListener("click", function () { beep("click"); renderHome(); show("screen-home"); });
 $("backList").addEventListener("click", function () { beep("click"); if (currentCat) openCat(currentCat.id); });
+$("backFromRoutine").addEventListener("click", function () { beep("click"); openCat("kumiawase"); });
+$("backFromPresent").addEventListener("click", function () { beep("click"); openRoutine(); });
 $("homeBtn").addEventListener("click", function () { beep("click"); renderHome(); show("screen-home"); });
 function renderSoundBtn() { $("soundBtn").textContent = settings.sound ? "🔊 音 ON" : "🔇 音 OFF"; }
 $("soundBtn").addEventListener("click", function () { settings.sound = !settings.sound; saveSettings(); renderSoundBtn(); if (settings.sound) beep("click"); });
@@ -457,7 +593,12 @@ function renderGuide() {
   $("guideWho").textContent = NAMES[gChar];
   $("guideLine").textContent = LINES[gLine % LINES.length];
 }
-$("guide").addEventListener("click", function () { gLine++; renderGuide(); });
+if (settings.guideMini) $("guide").classList.add("mini");
+$("guideMini").addEventListener("click", function (e) { e.stopPropagation(); settings.guideMini = true; saveSettings(); $("guide").classList.add("mini"); });
+$("guide").addEventListener("click", function () {
+  if ($("guide").classList.contains("mini")) { settings.guideMini = false; saveSettings(); $("guide").classList.remove("mini"); return; }
+  gLine++; renderGuide();
+});
 renderGuide();
 
 renderHome();
