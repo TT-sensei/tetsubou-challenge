@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>鉄棒チャレンジ｜TT-sensei</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    font-family: "Hiragino Maru Gothic ProN", "Hiragino Sans", "Yu Gothic UI", "Yu Gothic", Meiryo, sans-serif;
+    background: #eef6fc; color: #23405a; line-height: 1.6;
+  }
+  .wrap { max-width: 1080px; margin: 0 auto; padding: 14px 16px 110px; }
+  header.top {
+    display: flex; align-items: center; gap: 12px; flex-wrap: wrap;
+    background: #fff; border-radius: 18px; padding: 14px 18px;
+    box-shadow: 0 2px 10px rgba(35,64,90,.08); margin-bottom: 14px;
+  }
+  header.top .titlebox { flex: 1 1 auto; min-width: 220px; }
+  header.top h1 { font-size: 30px; color: #1d6fb8; letter-spacing: .02em; }
+  header.top .sub { font-size: 14px; color: #5b7a94; }
+  .hbtn {
+    border: 2px solid #bcd9ef; background: #f4faff; color: #1d6fb8;
+    border-radius: 999px; padding: 10px 16px; font-size: 15px; font-weight: 700;
+    cursor: pointer; min-height: 48px;
+  }
+  .hbtn:active { transform: scale(.97); }
+  .card {
+    background: #fff; border-radius: 18px; padding: 18px;
+    box-shadow: 0 2px 10px rgba(35,64,90,.08); margin-bottom: 14px;
+  }
+  .hero img { width: 84%; margin: 0 auto; border-radius: 14px; display: block; }
+  .hero p { margin-top: 10px; font-size: 16px; }
+  .safety { border: 3px solid #f0a49c; background: #fff8f6; }
+  .safety h2 { color: #c93a2e; font-size: 21px; margin-bottom: 8px; }
+  .safety ul { list-style: none; }
+  .safety li { padding: 7px 0 7px 34px; position: relative; font-size: 16.5px; border-bottom: 1px dashed #f3cfc9; }
+  .safety li:last-child { border-bottom: none; }
+  .safety li::before {
+    content: "✓"; position: absolute; left: 4px; top: 7px;
+    width: 22px; height: 22px; border-radius: 50%; background: #e2574c; color: #fff;
+    font-size: 14px; text-align: center; line-height: 22px; font-weight: 700;
+  }
+  h2.sec { font-size: 21px; color: #1d6fb8; margin-bottom: 10px; }
+  .catgrid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  @media (max-width: 640px) { .catgrid { grid-template-columns: 1fr; } }
+  .catcard {
+    border: none; text-align: left; cursor: pointer; border-radius: 18px; padding: 18px;
+    color: #fff; min-height: 118px; box-shadow: 0 3px 10px rgba(35,64,90,.15);
+  }
+  .catcard:active { transform: scale(.98); }
+  .catcard .ct { font-size: 22px; font-weight: 800; display: block; }
+  .catcard .cd { font-size: 14.5px; opacity: .95; display: block; margin-top: 4px; }
+  .catcard .cp { font-size: 13.5px; background: rgba(255,255,255,.25); border-radius: 999px; padding: 2px 10px; display: inline-block; margin-top: 8px; }
+  .c1 { background: #2e9e6b; } .c2 { background: #2277bb; } .c3 { background: #e07b2a; } .c4 { background: #8a5fc0; }
+  .progbar { height: 16px; background: #e3eef7; border-radius: 999px; overflow: hidden; margin: 8px 0; }
+  .progbar > div { height: 100%; background: #2e9e6b; width: 0%; transition: width .4s; }
+  .donelist { font-size: 15.5px; }
+  .donelist .none { color: #7b97ab; }
+  .srclink {
+    display: block; padding: 13px 14px; border: 2px solid #d7e8f5; border-radius: 14px;
+    margin-bottom: 9px; color: #1d6fb8; text-decoration: none; font-weight: 700; font-size: 16px; background: #f8fcff;
+  }
+  .srclink small { display: block; font-weight: 400; color: #5b7a94; font-size: 13px; }
+  .backbtn {
+    border: none; background: #eaf3fb; color: #1d6fb8; font-weight: 800; font-size: 16px;
+    border-radius: 999px; padding: 10px 18px; cursor: pointer; min-height: 48px; margin-bottom: 12px;
+  }
+  .skillcard {
+    width: 100%; text-align: left; border: 2px solid #d7e8f5; background: #fff; border-radius: 16px;
+    padding: 15px 16px; margin-bottom: 10px; cursor: pointer; display: flex; align-items: center; gap: 12px; min-height: 72px;
+  }
+  .skillcard:active { transform: scale(.99); }
+  .skillcard .nm { font-size: 19px; font-weight: 800; color: #23405a; flex: 1; }
+  .skillcard .lv { font-size: 13px; color: #7b97ab; white-space: nowrap; }
+  .skillcard .done {
+    background: #2e9e6b; color: #fff; font-size: 13px; font-weight: 800;
+    border-radius: 999px; padding: 3px 10px; white-space: nowrap;
+  }
+  .detail h2 { font-size: 27px; color: #1d6fb8; }
+  .detail .lvline { color: #7b97ab; font-size: 14.5px; margin: 2px 0 10px; }
+  .hardnote {
+    background: #fff3e2; border: 2px solid #f2b25c; color: #9a5b12; border-radius: 12px;
+    padding: 10px 13px; font-weight: 700; font-size: 15.5px; margin-bottom: 12px;
+  }
+  .detail h3 { font-size: 18px; color: #2277bb; margin: 14px 0 6px; }
+  .detail ul { padding-left: 22px; font-size: 16.5px; }
+  .detail ul li { margin-bottom: 5px; }
+  .linkbtn {
+    display: block; text-decoration: none; text-align: center; border-radius: 14px;
+    padding: 14px; font-size: 17px; font-weight: 800; margin-bottom: 9px; min-height: 56px;
+  }
+  .linkbtn.official { background: #2277bb; color: #fff; }
+  .linkbtn.nhk { background: #e07b2a; color: #fff; }
+  .linkbtn.local { background: #2e9e6b; color: #fff; }
+  .linkbtn small { display: block; font-size: 12.5px; font-weight: 400; opacity: .9; }
+  .checkarea { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 6px; }
+  .bigcheck {
+    flex: 1 1 200px; border: none; border-radius: 14px; padding: 15px; font-size: 18px; font-weight: 800;
+    cursor: pointer; min-height: 60px; background: #e8f4ec; color: #22713f; border: 2px solid #9fd3ae;
+  }
+  .bigcheck.on { background: #2e9e6b; color: #fff; border-color: #2e9e6b; }
+  .countbtn {
+    flex: 1 1 200px; border-radius: 14px; padding: 15px; font-size: 17px; font-weight: 800;
+    cursor: pointer; min-height: 60px; background: #f4faff; color: #1d6fb8; border: 2px solid #bcd9ef;
+  }
+  .countnum { font-size: 14.5px; color: #5b7a94; margin-top: 6px; }
+  footer.src { font-size: 12.5px; color: #7b97ab; padding: 4px 6px 0; }
+  .guide {
+    position: fixed; right: 12px; bottom: 12px; z-index: 50; display: flex; align-items: flex-end; gap: 8px;
+    max-width: min(430px, calc(100vw - 24px)); cursor: pointer;
+  }
+  .guide .bubble {
+    background: #fff; border: 2px solid #bcd9ef; border-radius: 14px; padding: 9px 12px;
+    font-size: 14.5px; box-shadow: 0 3px 12px rgba(35,64,90,.15);
+  }
+  .guide .bubble .who { font-size: 11.5px; color: #7b97ab; font-weight: 700; }
+  .guide img { width: 64px; height: 64px; border-radius: 50%; background: #fff; border: 2px solid #bcd9ef; object-fit: cover; }
+  .hidden { display: none !important; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <div class="titlebox">
+      <h1>鉄棒チャレンジ</h1>
+      <div class="sub">体育・器械運動（鉄棒）｜自分に合った<ruby>技<rt>わざ</rt></ruby>を選んで、お手本動画でポイントをつかもう</div>
+    </div>
+    <button class="hbtn" id="soundBtn" type="button">🔊 音 ON</button>
+    <button class="hbtn" id="homeBtn" type="button">🏠 トップ</button>
+  </header>
+
+  <!-- トップ画面 -->
+  <section id="screen-home">
+    <div class="card hero">
+      <img src="assets/hero.webp" alt="鉄棒にぶら下がる子と、マットを押さえる友だち、見守る友だち">
+      <p>鉄棒の技を、自分の力に合わせて選べる教材です。技のポイントを知って、公式のお手本動画を見て、安全に練習しましょう。</p>
+    </div>
+
+    <div class="card safety">
+      <h2>⚠ 安全のやくそく（かならず守ろう）</h2>
+      <ul>
+        <li>鉄棒がぐらつかないか、場所が安全か確かめる</li>
+        <li>鉄棒の下にはマットをしく</li>
+        <li>自分の背に合った高さの鉄棒を使う</li>
+        <li>一人ずつ順番に行う。待つ場所を守る</li>
+        <li>逆さの姿勢では、手を絶対に離さない</li>
+        <li>難しい技は、先生や大人の見ているところで、補助をしてもらって行う</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h2 class="sec">れんしゅうの入り口</h2>
+      <div class="catgrid" id="catGrid"></div>
+    </div>
+
+    <div class="card">
+      <h2 class="sec">学習の記録</h2>
+      <div id="progText" style="font-size:16.5px;">できた技：0 / 13</div>
+      <div class="progbar"><div id="progFill"></div></div>
+      <div class="donelist" id="doneList"><span class="none">まだ記録がありません。技のページで「できた！」を押してみよう。</span></div>
+    </div>
+
+    <div class="card">
+      <h2 class="sec">資料室（公式の資料・動画）</h2>
+      <a class="srclink" href="https://www.mext.go.jp/sports/b_menu/sports/mcatetop04/list/1398875_00003.htm" target="_blank" rel="noopener">スポーツ庁「小学校体育の動画資料」<small>学年別の資料（PDF）から、技ごとの動画が見られます</small></a>
+      <a class="srclink" href="https://www.mext.go.jp/sports/content/20231220-spt_sseisaku02-000033170_1.pdf" target="_blank" rel="noopener">低学年「器械・器具を使っての運動遊び」（PDF）<small>スポーツ庁｜鉄棒を使った運動遊びが載っています</small></a>
+      <a class="srclink" href="https://www.mext.go.jp/sports/content/20231220-spt_sseisaku02-000033170_2.pdf" target="_blank" rel="noopener">中学年「器械運動」（PDF）<small>スポーツ庁｜鉄棒運動の技と動画</small></a>
+      <a class="srclink" href="https://www.mext.go.jp/sports/content/20231220-spt_sseisaku02-000033170_3.pdf" target="_blank" rel="noopener">高学年「器械運動」（PDF）<small>スポーツ庁｜鉄棒運動の技と動画</small></a>
+      <a class="srclink" href="https://www.pref.shiga.lg.jp/edu/ma08/16897.html" target="_blank" rel="noopener">滋賀県教育委員会「鉄棒を使った運動遊び」<small>技ごとの資料（PDF）がそろっています</small></a>
+      <a class="srclink" href="https://www.mext.go.jp/sports/b_menu/sports/mcatetop04/list/jsa_00003.htm" target="_blank" rel="noopener">スポーツ庁「小学校体育（運動領域）指導の手引」<small>先生向けの指導資料です</small></a>
+    </div>
+  </section>
+
+  <!-- カテゴリ画面 -->
+  <section id="screen-list" class="hidden">
+    <button class="backbtn" id="backHome1" type="button">← トップへもどる</button>
+    <div class="card">
+      <h2 class="sec" id="listTitle"></h2>
+      <p id="listDesc" style="font-size:15.5px; margin-bottom:12px;"></p>
+      <div id="skillList"></div>
+    </div>
+  </section>
+
+  <!-- 技の画面 -->
+  <section id="screen-detail" class="hidden">
+    <button class="backbtn" id="backList" type="button">← 技の一覧へもどる</button>
+    <div class="card detail" id="detailCard"></div>
+  </section>
+
+  <footer class="src">
+    出典：スポーツ庁「小学校体育の動画資料 ～器械・器具を使っての運動遊び、器械運動～」「小学校体育（運動領域）指導の手引」／ NHK for School「はりきり体育ノ介」／ 滋賀県教育委員会「鉄棒を使った運動遊び」。動画と資料は、各公式ページへのリンクで開きます。このページの説明文はTT-senseiのオリジナルです。記録は、この端末の中にだけ保存されます。
+  </footer>
+</div>
+
+<div class="guide" id="guide">
+  <div class="bubble"><div class="who" id="guideWho"></div><div id="guideLine"></div></div>
+  <img id="guideFace" alt="ナビキャラ">
+</div>
+
+<script>
+"use strict";
+var PDF_LOW = "https://www.mext.go.jp/sports/content/20231220-spt_sseisaku02-000033170_1.pdf";
+var PDF_MID = "https://www.mext.go.jp/sports/content/20231220-spt_sseisaku02-000033170_2.pdf";
+var PDF_HIGH = "https://www.mext.go.jp/sports/content/20231220-spt_sseisaku02-000033170_3.pdf";
+var PAGE_DOGA = "https://www.mext.go.jp/sports/b_menu/sports/mcatetop04/list/1398875_00003.htm";
+var SHIGA = "https://www.pref.shiga.lg.jp/edu/ma08/16897.html";
+var NHK1 = "https://www.nhk.or.jp/taiiku/harikiri/?das_id=D0005220001_00000";
+var NHK2 = "https://www.nhk.or.jp/taiiku/harikiri/?das_id=D0005220002_00000";
+var NHK3 = "https://www.nhk.or.jp/taiiku/harikiri/?das_id=D0005220003_00000";
+
+var L_DOGA_LOW = { label: "スポーツ庁の資料で見る（低学年）", url: PDF_LOW, kind: "official", note: "「鉄棒を使った運動遊び」のページに動画への入口があります" };
+var L_DOGA_MID = { label: "スポーツ庁の資料で見る（中学年）", url: PDF_MID, kind: "official", note: "「鉄棒運動」のページに動画への入口があります" };
+var L_DOGA_HIGH = { label: "スポーツ庁の資料で見る（高学年）", url: PDF_HIGH, kind: "official", note: "「鉄棒運動」のページに動画への入口があります" };
+var L_SHIGA = { label: "滋賀県の技別資料を見る", url: SHIGA, kind: "local", note: "滋賀県教育委員会「鉄棒を使った運動遊び」" };
+var L_NHK_SAKA = { label: "NHKの動画で見る（さかあがり）", url: NHK1, kind: "nhk", note: "はりきり体育ノ介「さかあがりに挑戦だ！」" };
+var L_NHK_HIZA = { label: "NHKの動画で見る（ひざかけふりあがり）", url: NHK2, kind: "nhk", note: "はりきり体育ノ介「ひざかけふりあがりに挑戦だ！」" };
+var L_NHK_ZENPOU = { label: "NHKの動画で見る（前方支持回転）", url: NHK3, kind: "nhk", note: "はりきり体育ノ介「前方支持回転に挑戦だ！」" };
+var L_DOGA_PAGE = { label: "スポーツ庁「動画資料」のページへ", url: PAGE_DOGA, kind: "official", note: "学年別の資料を選べます" };
+
+var CATS = [
+  { id: "nareyou", title: "鉄棒に慣れよう", desc: "ぶら下がったり、支えたり、逆さになったり。鉄棒と仲よくなる技から始めよう。", cls: "c1" },
+  { id: "kihon", title: "回転・支持の基本", desc: "回って下りる、振って上がる。回転の基本の技に挑戦しよう。", cls: "c2" },
+  { id: "chousen", title: "回転技に挑戦", desc: "逆上がりや支持回転などの発展技。かならず先生や大人の補助のもとで練習しよう。", cls: "c3" },
+  { id: "kumiawase", title: "技を組み合わせよう", desc: "できるようになった技をつないで、自分の発表を作ろう。", cls: "c4" }
+];
+
+var SKILLS = [
+  { id: "burasagari", cat: "nareyou", name: "ぶら下がり", level: 1, hard: false,
+    points: ["両手で鉄棒をしっかりにぎる。親指もバーにかけると、落ちにくい。", "体をぶらぶらさせず、静かにぶら下がる。"],
+    practice: "足がつく低い鉄棒から始めて、足を浮かせる時間を少しずつ長くしよう。まず10秒を目標に。",
+    links: [L_DOGA_LOW, L_SHIGA] },
+  { id: "tsubame", cat: "nareyou", name: "ツバメ", level: 1, hard: false,
+    points: ["腕をまっすぐ伸ばして、体を支える。", "足を後ろに伸ばして、おなかに力を入れるとバランスが取りやすい。"],
+    practice: "低い鉄棒で「支える」だけを練習しよう。3秒、5秒と、少しずつ長くキープ。",
+    links: [L_DOGA_LOW, L_SHIGA] },
+  { id: "futonhoshi", cat: "nareyou", name: "ふとんほし", level: 1, hard: false,
+    points: ["鉄棒におなかをのせて、両足を後ろにまっすぐ伸ばす。干したふとんのような形。", "手は鉄棒をしっかりにぎったまま、絶対に離さない。"],
+    practice: "まず、おなかをのせるだけから。慣れてきたら、片足ずつ浮かせてみよう。",
+    links: [L_DOGA_LOW, L_SHIGA] },
+  { id: "dangomushi", cat: "nareyou", name: "ダンゴ虫", level: 2, hard: false,
+    points: ["両手と両足で鉄棒にぶら下がり、ひざを曲げて体を小さく丸める。", "逆さの感覚に慣れるための技。逆さの姿勢では、手を絶対に離さない。"],
+    practice: "足をかけるだけ、両足をかけて短い時間キープ、の順に少しずつ進めよう。",
+    links: [L_DOGA_LOW, L_SHIGA] },
+  { id: "asinuki", cat: "nareyou", name: "足ぬき回り", level: 2, hard: false,
+    points: ["ぶら下がったまま、両足を手の間から前に抜いて、後ろへ回して下りる。", "足をそろえて抜くと、スムーズに回れる。"],
+    practice: "片足ずつ抜く練習から始めよう。「抜く→戻す」を繰り返すと慣れてくる。",
+    links: [L_DOGA_LOW, L_SHIGA] },
+  { id: "maemawari", cat: "kihon", name: "前回りおり", level: 2, hard: false,
+    points: ["支えた姿勢から、おなかを鉄棒につけたまま、体を前に傾けて回る。", "あごを引いて、背中を丸めるイメージで回ると下りやすい。"],
+    practice: "ゆっくり前に傾ける練習から。先生や友だちに支えてもらいながら回ってみよう。",
+    links: [L_DOGA_MID, L_DOGA_HIGH] },
+  { id: "ushirofuri", cat: "kihon", name: "後ろ振りおり", level: 2, hard: false,
+    points: ["支えた姿勢から、体を後ろに振って下りる技。", "手を離すのは、体が後ろに振れてから。着地はひざを曲げて、静かに。"],
+    practice: "支えたまま前後に小さく振る練習で、手を離すタイミングをつかもう。",
+    links: [L_DOGA_MID] },
+  { id: "kakaekomi", cat: "kihon", name: "かかえこみ前回り", level: 3, hard: true,
+    points: ["ひざを胸に引き寄せて小さく丸まり、その勢いで前へ回る。", "回る途中も、鉄棒をしっかりにぎり続ける。"],
+    practice: "マット運動の前転で「丸まる」感覚を先に練習しよう。鉄棒では、前回りおりが安定してから挑戦。",
+    links: [L_DOGA_MID, L_DOGA_HIGH] },
+  { id: "hizakake", cat: "kihon", name: "ひざかけふり上がり", level: 3, hard: false,
+    points: ["片方のひざを鉄棒にかけ、もう一方の足の振りと体の勢いで上がる。", "かけるひざは、鉄棒の上にしっかり置く。"],
+    practice: "ひざをかけて前後に振るだけの練習から。振りを大きくして、補助してもらいながら上がってみよう。",
+    links: [L_NHK_HIZA, L_DOGA_MID, L_DOGA_HIGH] },
+  { id: "sakaagari", cat: "chousen", name: "逆上がり", level: 3, hard: true,
+    points: ["鉄棒をおなかに引き寄せたまま、足を真上に蹴り上げる。", "腕が伸びきると回れない。ひじを曲げて、鉄棒を体に近づけたままにする。"],
+    practice: "坂道や低い鉄棒での補助逆上がり、ぶら下がりで体を鉄棒に引き寄せる練習が効果的。NHKの「できないポイント」と見比べてみよう。",
+    links: [L_NHK_SAKA, L_DOGA_MID, L_DOGA_HIGH] },
+  { id: "zenpou", cat: "chousen", name: "前方支持回転", level: 3, hard: true,
+    points: ["支えた姿勢から、体をまっすぐに保ったまま前へ回る。", "おなかと鉄棒を離さないのがコツ。"],
+    practice: "前回りおり、かかえこみ前回りが安定してから。かならず補助してもらって練習しよう。",
+    links: [L_NHK_ZENPOU, L_DOGA_MID, L_DOGA_HIGH] },
+  { id: "kouhou", cat: "chousen", name: "後方支持回転", level: 3, hard: true,
+    points: ["支えた姿勢から、おなかを鉄棒につけたまま後ろへ回る。", "足を後ろに振る勢いを使って回る。"],
+    practice: "後ろ振りおりで、後ろへ動く感覚をつかんでから。かならず補助してもらって練習しよう。",
+    links: [L_DOGA_MID, L_DOGA_HIGH] },
+  { id: "katahiza", cat: "chousen", name: "片ひざかけ回転", level: 3, hard: true,
+    points: ["片方のひざを鉄棒にかけて回る回転技。前回り（前方）と、後ろ回り（後方）がある。", "かけるひざを軸にして、体を鉄棒に近づけたまま回る。"],
+    practice: "ひざかけふり上がりが安定してから。かならず補助してもらって練習しよう。",
+    links: [L_DOGA_MID, L_DOGA_HIGH] },
+  { id: "kumiawase", cat: "kumiawase", name: "できる技を組み合わせる", level: 2, hard: false, activity: true,
+    points: ["できるようになった技を、2〜3つ続けて行ってみよう。（例）ツバメ→前回りおり、ふとんほし→足ぬき回り。", "技と技の「つなぎ」の動きも、自分で考えてみよう。"],
+    practice: "まずは2つの技の組み合わせから。順番を決めて、ゆっくりつないでみよう。",
+    links: [L_DOGA_PAGE] },
+  { id: "tokui", cat: "kumiawase", name: "自分の得意な技を見つける", level: 1, hard: false, activity: true,
+    points: ["「できた！」がついた技が、あなたの得意な技の候補です。", "発表では、得意な技に組み合わせを加えて見せよう。"],
+    practice: "得意な技を3つ選んで、発表の順番を決めてみよう。",
+    links: [L_DOGA_PAGE] }
+];
+
+var STORE_KEY = "tetsubouChallenge.v1";
+var SET_KEY = "tetsubouChallenge.settings.v1";
+var store = { done: {}, counts: {} };
+var settings = { sound: true };
+try {
+  var raw = localStorage.getItem(STORE_KEY);
+  if (raw) { var p = JSON.parse(raw); if (p && p.done) store.done = p.done; if (p && p.counts) store.counts = p.counts; }
+  var raw2 = localStorage.getItem(SET_KEY);
+  if (raw2) { var p2 = JSON.parse(raw2); if (p2 && typeof p2.sound === "boolean") settings.sound = p2.sound; }
+} catch (e) {}
+function saveStore() { try { localStorage.setItem(STORE_KEY, JSON.stringify(store)); } catch (e) {} }
+function saveSettings() { try { localStorage.setItem(SET_KEY, JSON.stringify(settings)); } catch (e) {} }
+
+var AC = null, soundMod = null;
+function beep(id) {
+  if (!settings.sound) return;
+  try {
+    var run = function (mod) {
+      try {
+        AC = AC || new (window.AudioContext || window.webkitAudioContext)();
+        if (AC.state === "suspended") AC.resume();
+        mod.playSound(AC, id, 0.5);
+      } catch (e) {}
+    };
+    if (soundMod) run(soundMod);
+    else import("https://tt-sensei.github.io/sounds-recipe-/sounds.js").then(function (m) { soundMod = m; run(m); }).catch(function () {});
+  } catch (e) {}
+}
+
+var $ = function (id) { return document.getElementById(id); };
+var currentCat = null, currentSkill = null;
+var LEVEL_LABEL = { 1: "やさしい", 2: "ふつう", 3: "チャレンジ" };
+function levelDots(lv) { var s = ""; for (var i = 1; i <= 3; i++) s += (i <= lv ? "●" : "○"); return s + " " + LEVEL_LABEL[lv]; }
+function skillsOf(catId) { return SKILLS.filter(function (s) { return s.cat === catId; }); }
+function countedSkills() { return SKILLS.filter(function (s) { return !s.activity; }); }
+function doneCount() { return countedSkills().filter(function (s) { return store.done[s.id]; }).length; }
+
+function show(screen) {
+  ["screen-home", "screen-list", "screen-detail"].forEach(function (id) { $(id).classList.add("hidden"); });
+  $(screen).classList.remove("hidden");
+  window.scrollTo(0, 0);
+}
+
+function renderHome() {
+  var grid = $("catGrid"); grid.innerHTML = "";
+  CATS.forEach(function (c) {
+    var list = skillsOf(c.id);
+    var total = list.filter(function (s) { return !s.activity; }).length;
+    var done = list.filter(function (s) { return !s.activity && store.done[s.id]; }).length;
+    var b = document.createElement("button");
+    b.type = "button"; b.className = "catcard " + c.cls;
+    b.innerHTML = '<span class="ct">' + c.title + '</span><span class="cd">' + c.desc + '</span>' +
+      (total ? '<span class="cp">できた技 ' + done + " / " + total + "</span>" : '<span class="cp">活動のページ</span>');
+    b.addEventListener("click", function () { beep("decide"); openCat(c.id); });
+    grid.appendChild(b);
+  });
+  var totalAll = countedSkills().length, doneAll = doneCount();
+  $("progText").textContent = "できた技：" + doneAll + " / " + totalAll;
+  $("progFill").style.width = (totalAll ? Math.round(doneAll / totalAll * 100) : 0) + "%";
+  var dl = $("doneList");
+  var doneNames = countedSkills().filter(function (s) { return store.done[s.id]; }).map(function (s) { return s.name; });
+  if (doneNames.length) {
+    dl.innerHTML = doneNames.map(function (n) { return "⭐ " + n; }).join("　");
+  } else {
+    dl.innerHTML = '<span class="none">まだ記録がありません。技のページで「できた！」を押してみよう。</span>';
+  }
+}
+
+function openCat(catId) {
+  currentCat = CATS.filter(function (c) { return c.id === catId; })[0];
+  $("listTitle").textContent = currentCat.title;
+  $("listDesc").textContent = currentCat.desc;
+  var box = $("skillList"); box.innerHTML = "";
+  skillsOf(catId).forEach(function (s) {
+    var b = document.createElement("button");
+    b.type = "button"; b.className = "skillcard";
+    b.innerHTML = '<span class="nm">' + s.name + '</span><span class="lv">' + levelDots(s.level) + "</span>" +
+      (store.done[s.id] ? '<span class="done">できた！</span>' : "");
+    b.addEventListener("click", function () { beep("decide"); openSkill(s.id); });
+    box.appendChild(b);
+  });
+  show("screen-list");
+}
+
+function openSkill(skillId) {
+  currentSkill = SKILLS.filter(function (s) { return s.id === skillId; })[0];
+  var s = currentSkill;
+  var html = "";
+  html += "<h2>" + s.name + "</h2>";
+  html += '<div class="lvline">難易度の目安：' + levelDots(s.level) + "</div>";
+  if (s.hard) html += '<div class="hardnote">⚠ この技は、先生や大人の見ているところで、補助をしてもらって練習しましょう。一人で無理に挑戦しないこと。</div>';
+  html += "<h3>できるポイント</h3><ul>";
+  s.points.forEach(function (pt) { html += "<li>" + pt + "</li>"; });
+  html += "</ul>";
+  html += "<h3>できないときの練習方法</h3><ul><li>" + s.practice + "</li></ul>";
+  html += "<h3>お手本の動画・資料（公式ページ）</h3>";
+  s.links.forEach(function (l) {
+    html += '<a class="linkbtn ' + l.kind + '" href="' + l.url + '" target="_blank" rel="noopener">▶ ' + l.label + "<small>" + l.note + "</small></a>";
+  });
+  html += "<h3>練習チェック</h3>";
+  html += '<div class="checkarea">' +
+    '<button type="button" class="bigcheck' + (store.done[s.id] ? " on" : "") + '" id="doneBtn">' + (store.done[s.id] ? "⭐ できた！（記録ずみ）" : "☆ できた！を記録する") + "</button>" +
+    '<button type="button" class="countbtn" id="countBtn">今日も練習した（＋1）</button></div>';
+  html += '<div class="countnum">練習した回数：' + (store.counts[s.id] || 0) + " 回</div>";
+  $("detailCard").innerHTML = html;
+  $("doneBtn").addEventListener("click", function () {
+    if (store.done[s.id]) { delete store.done[s.id]; beep("click"); }
+    else { store.done[s.id] = true; beep("correct"); }
+    saveStore(); openSkill(s.id); renderHome();
+  });
+  $("countBtn").addEventListener("click", function () {
+    store.counts[s.id] = (store.counts[s.id] || 0) + 1;
+    saveStore(); beep("practice"); openSkill(s.id); renderHome();
+  });
+  show("screen-detail");
+}
+
+$("backHome1").addEventListener("click", function () { beep("click"); renderHome(); show("screen-home"); });
+$("backList").addEventListener("click", function () { beep("click"); if (currentCat) openCat(currentCat.id); });
+$("homeBtn").addEventListener("click", function () { beep("click"); renderHome(); show("screen-home"); });
+function renderSoundBtn() { $("soundBtn").textContent = settings.sound ? "🔊 音 ON" : "🔇 音 OFF"; }
+$("soundBtn").addEventListener("click", function () { settings.sound = !settings.sound; saveSettings(); renderSoundBtn(); if (settings.sound) beep("click"); });
+renderSoundBtn();
+
+var CHARS = ["riku", "sora", "kai", "saku", "tsuki", "nami"];
+var NAMES = { riku: "りく", sora: "そら", kai: "かい", saku: "さく", tsuki: "つき", nami: "なみ" };
+var LINES = [
+  "練習の前に、安全のやくそくを確かめよう。",
+  "難しい技は、先生や大人の補助のもとで練習しようね。",
+  "下にマットがあるか、最初にチェック！",
+  "自分の力に合った技を選ぶのが、上達への近道だよ。",
+  "逆さの姿勢では、手を絶対に離さないこと。",
+  "お手本動画では「できるポイント」と「できないポイント」を見比べてみよう。"
+];
+var gChar = CHARS[Math.floor(Math.random() * CHARS.length)];
+var gLine = 0;
+function renderGuide() {
+  $("guideFace").src = "https://tt-sensei.github.io/navi-character-/assets/web/characters/" + gChar + "/expressions/01-normal-smile.webp";
+  $("guideWho").textContent = NAMES[gChar];
+  $("guideLine").textContent = LINES[gLine % LINES.length];
+}
+$("guide").addEventListener("click", function () { gLine++; renderGuide(); });
+renderGuide();
+
+renderHome();
+</script>
+</body>
+</html>
