@@ -79,6 +79,10 @@
     border-radius: 999px; padding: 3px 10px; white-space: nowrap;
   }
   .detail h2 { font-size: 27px; color: #1d6fb8; }
+  .thumb-wrap { text-align: center; margin: 6px 0 4px; }
+  .thumb-wrap img { max-width: 560px; width: 100%; border-radius: 12px; border: 2px solid #d7e8f5; background: #fff; }
+  .thumb-wrap .cap { font-size: 12px; color: #7b97ab; margin-top: 3px; }
+  .skillcard .cthumb { width: 86px; height: 54px; object-fit: cover; border-radius: 9px; border: 1.5px solid #d7e8f5; flex: none; }
   .detail .lvline { color: #7b97ab; font-size: 14.5px; margin: 2px 0 10px; }
   .hardnote {
     background: #fff3e2; border: 2px solid #f2b25c; color: #9a5b12; border-radius: 12px;
@@ -93,6 +97,7 @@
   }
   .linkbtn.official { background: #2277bb; color: #fff; }
   .linkbtn.nhk { background: #e07b2a; color: #fff; }
+  .linkbtn.video { background: #d93a2b; color: #fff; }
   .linkbtn.local { background: #2e9e6b; color: #fff; }
   .linkbtn small { display: block; font-size: 12.5px; font-weight: 400; opacity: .9; }
   .checkarea { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 6px; }
@@ -190,7 +195,7 @@
   </section>
 
   <footer class="src">
-    出典：スポーツ庁「小学校体育の動画資料 ～器械・器具を使っての運動遊び、器械運動～」「小学校体育（運動領域）指導の手引」／ NHK for School「はりきり体育ノ介」／ 滋賀県教育委員会「鉄棒を使った運動遊び」。動画と資料は、各公式ページへのリンクで開きます。このページの説明文はTT-senseiのオリジナルです。記録は、この端末の中にだけ保存されます。
+    出典：スポーツ庁「小学校体育の動画資料 ～器械・器具を使っての運動遊び、器械運動～」「小学校体育（運動領域）指導の手引」／ NHK for School「はりきり体育ノ介」／ 滋賀県教育委員会「鉄棒を使った運動遊び」。技のサムネイル画像は、スポーツ庁「小学校体育の動画資料」のイラスト部分を切り取って表示しています。動画と資料は、各公式ページへのリンクで開きます。このページの説明文はTT-senseiのオリジナルです。記録は、この端末の中にだけ保存されます。
   </footer>
 </div>
 
@@ -289,6 +294,27 @@ var SKILLS = [
     links: [L_DOGA_PAGE] }
 ];
 
+
+// 技ごとのサムネイルと、スポーツ庁の公式動画への直接リンク（動画資料PDF内のリンクより）
+function YT(id, note) { return { label: "動画で見る（スポーツ庁）", url: "https://youtu.be/" + id, kind: "video", note: note }; }
+var NOTE_LOW = "スポーツ庁「器械・器具を使っての運動遊び」の動画";
+var NOTE_MID = "スポーツ庁「中学年・器械運動」の動画";
+var NOTE_HIGH = "スポーツ庁「高学年・器械運動」の動画";
+var OVERRIDE = {
+  tsubame: { thumb: "tsubame", links: [YT("Ssu41LCDOm4", NOTE_LOW), L_SHIGA] },
+  futonhoshi: { thumb: "futonhoshi", links: [YT("PonrNnwWV0M", NOTE_LOW), L_SHIGA] },
+  asinuki: { thumb: "asinuki", links: [YT("PMvwFUCBPnc", NOTE_LOW), L_SHIGA] },
+  maemawari: { thumb: "maemawari", links: [YT("Y-IbptzHUFA", NOTE_MID + "（前回り下り）"), L_DOGA_MID] },
+  kakaekomi: { thumb: "kakaekomi", links: [YT("osnJyM7mT_o", NOTE_MID), L_DOGA_MID] },
+  hizakake: { thumb: "hizakake", links: [L_NHK_HIZA, YT("jvROPhZy1Gg", NOTE_MID), L_DOGA_MID] },
+  sakaagari: { thumb: "sakaagari", links: [L_NHK_SAKA, YT("b86_1k7At2w", NOTE_HIGH + "（逆上がり）"),
+    { label: "動画で見る（補助逆上がり）", url: "https://youtu.be/WHNtpjZcn80", kind: "video", note: "補助をしてもらう練習の動画（高学年資料より）" }] },
+  zenpou: { thumb: "zenpou", links: [L_NHK_ZENPOU, YT("EtTdlI32WQ4", NOTE_MID)] },
+  kouhou: { thumb: "kouhou", links: [YT("8-QTzlIKTNo", NOTE_MID), L_DOGA_MID] },
+  katahiza: { thumb: "katahiza", links: [YT("JU0biAk4kmA", NOTE_MID + "（前方かたひざかけ回転）"), YT("0_vujGO3_SU", NOTE_MID + "（後方かたひざかけ回転）")] }
+};
+SKILLS.forEach(function (s) { var o = OVERRIDE[s.id]; if (o) { s.thumb = o.thumb; s.links = o.links; } });
+
 var STORE_KEY = "tetsubouChallenge.v1";
 var SET_KEY = "tetsubouChallenge.settings.v1";
 var store = { done: {}, counts: {} };
@@ -365,7 +391,7 @@ function openCat(catId) {
   skillsOf(catId).forEach(function (s) {
     var b = document.createElement("button");
     b.type = "button"; b.className = "skillcard";
-    b.innerHTML = '<span class="nm">' + s.name + '</span><span class="lv">' + levelDots(s.level) + "</span>" +
+    b.innerHTML = (s.thumb ? '<img class="cthumb" src="assets/thumbs/' + s.thumb + '.webp" alt="">' : "") + '<span class="nm">' + s.name + '</span><span class="lv">' + levelDots(s.level) + "</span>" +
       (store.done[s.id] ? '<span class="done">できた！</span>' : "");
     b.addEventListener("click", function () { beep("decide"); openSkill(s.id); });
     box.appendChild(b);
@@ -379,6 +405,7 @@ function openSkill(skillId) {
   var html = "";
   html += "<h2>" + s.name + "</h2>";
   html += '<div class="lvline">難易度の目安：' + levelDots(s.level) + "</div>";
+  if (s.thumb) html += '<div class="thumb-wrap"><img src="assets/thumbs/' + s.thumb + '.webp" alt="' + s.name + 'の動きのイラスト"><div class="cap">スポーツ庁「小学校体育の動画資料」のイラストより</div></div>';
   if (s.hard) html += '<div class="hardnote">⚠ この技は、先生や大人の見ているところで、補助をしてもらって練習しましょう。一人で無理に挑戦しないこと。</div>';
   html += "<h3>できるポイント</h3><ul>";
   s.points.forEach(function (pt) { html += "<li>" + pt + "</li>"; });
