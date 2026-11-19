@@ -351,7 +351,7 @@ var SKILLS = [
     practice: "足がつく低い鉄棒から始めて、足を浮かせる時間を少しずつ長くしよう。まず10秒を目標に。",
     links: [L_DOGA_LOW, L_SHIGA] },
   { id: "tsubame", cat: "nareyou", name: "ツバメ", level: 1, hard: false,
-    points: ["腕をまっすぐ伸ばして、体を支える。", "足を後ろに伸ばして、おなかに力を入れるとバランスが取りやすい。"],
+    points: ["腕をまっすぐ伸ばし、鉄棒を押して体を支える。", "足を後ろに伸ばして、おなかに力を入れるとバランスが取りやすい。"],
     practice: "低い鉄棒で「支える」だけを練習しよう。3秒、5秒と、少しずつ長くキープ。",
     links: [L_DOGA_LOW, L_SHIGA] },
   { id: "futonhoshi", cat: "nareyou", name: "ふとんほし", level: 1, hard: false,
@@ -359,15 +359,15 @@ var SKILLS = [
     practice: "まず、おなかをのせるだけから。慣れてきたら、片足ずつ浮かせてみよう。",
     links: [L_DOGA_LOW, L_SHIGA] },
   { id: "dangomushi", cat: "nareyou", name: "ダンゴ虫", level: 2, hard: false, watch: true,
-    points: ["両手と両足で鉄棒にぶら下がり、ひざを曲げて体を小さく丸める。", "逆さの感覚に慣れるための技。逆さの姿勢では、手を絶対に離さない。"],
+    points: ["両手で鉄棒をにぎってぶら下がり、両足を鉄棒にかけて、ひざを曲げて体を小さく丸める。", "逆さの感覚に慣れるための技。逆さの姿勢では、手を絶対に離さない。"],
     practice: "足をかけるだけ、両足をかけて短い時間キープ、の順に少しずつ進めよう。",
     links: [L_DOGA_LOW, L_SHIGA] },
   { id: "asinuki", cat: "nareyou", name: "足ぬき回り", level: 2, hard: false, watch: true,
-    points: ["ぶら下がったまま、両足を手の間から前に抜いて、後ろへ回して下りる。", "足をそろえて抜くと、スムーズに回れる。"],
+    points: ["ぶら下がったまま、両足をそろえて手の間から前に抜き、後ろへ回して下りる。", "回る間も鉄棒をにぎり続け、最後は足の裏で静かに着地する。"],
     practice: "片足ずつ抜く練習から始めよう。「抜く→戻す」を繰り返すと慣れてくる。",
     links: [L_DOGA_LOW, L_SHIGA] },
   { id: "maemawari", cat: "kihon", name: "前回りおり", level: 2, hard: false,
-    points: ["支えた姿勢から、おなかを鉄棒につけたまま、体を前に傾けて回る。", "あごを引いて、背中を丸めるイメージで回ると下りやすい。"],
+    points: ["支えた姿勢から、おなかを鉄棒につけたまま、体の重心を前に移して回り始める。", "あごを引いて背中を丸め、回り終わったら足の裏で静かに着地する。"],
     practice: "ゆっくり前に傾ける練習から。先生に見てもらいながら回ってみよう（補助のしかたは、先生に確認しよう）。",
     links: [L_DOGA_MID, L_DOGA_HIGH] },
   { id: "ushirofuri", cat: "kihon", name: "後ろ振りおり", level: 2, hard: false,
@@ -379,19 +379,19 @@ var SKILLS = [
     practice: "マット運動の前転で「丸まる」感覚を先に練習しよう。鉄棒では、前回りおりが安定してから挑戦。",
     links: [L_DOGA_MID, L_DOGA_HIGH] },
   { id: "hizakake", cat: "kihon", name: "ひざかけふり上がり", level: 3, hard: false,
-    points: ["片方のひざを鉄棒にかけ、もう一方の足の振りと体の勢いで上がる。", "かけるひざは、鉄棒の上にしっかり置く。"],
+    points: ["片方のひざを鉄棒にかけ、もう一方の足で踏み切って、前後に大きく振る。", "振りの勢いで体が上がったら、腕で体を支えて、支えた姿勢になる。"],
     practice: "ひざをかけて前後に振るだけの練習から。補助のしかたを先生に確認してから、振りを大きくして上がってみよう。",
     links: [L_NHK_HIZA, L_DOGA_MID, L_DOGA_HIGH] },
   { id: "sakaagari", cat: "chousen", name: "逆上がり", level: 3, hard: true,
-    points: ["鉄棒をおなかに引き寄せたまま、足を真上に蹴り上げる。", "腕が伸びきると回れない。ひじを曲げて、鉄棒を体に近づけたままにする。"],
+    points: ["片足で踏み込み、もう一方の足を大きく振り上げて、腰を鉄棒に近づける。", "ひじを曲げて体を引きつけたまま回ると、支えた姿勢になれる。"],
     practice: "坂道や低い鉄棒での補助逆上がり、ぶら下がりで体を鉄棒に引き寄せる練習が効果的。NHKの「できないポイント」と見比べてみよう。",
     links: [L_NHK_SAKA, L_DOGA_MID, L_DOGA_HIGH] },
   { id: "zenpou", cat: "chousen", name: "前方支持回転", level: 3, hard: true,
-    points: ["支えた姿勢から、体をまっすぐに保ったまま前へ回る。", "おなかと鉄棒を離さないのがコツ。"],
+    points: ["支えた姿勢から、体をまっすぐに保ち、おなかを鉄棒につけたまま前へ倒れて回る。", "回る間も、腕で鉄棒を押して体を支え続ける。"],
     practice: "前回りおり、かかえこみ前回りが安定してから。かならず補助してもらって練習しよう。",
     links: [L_NHK_ZENPOU, L_DOGA_MID, L_DOGA_HIGH] },
   { id: "kouhou", cat: "chousen", name: "後方支持回転", level: 3, hard: true,
-    points: ["支えた姿勢から、おなかを鉄棒につけたまま後ろへ回る。", "足を後ろに振る勢いを使って回る。"],
+    points: ["支えた姿勢で体を前後に振り、振りが大きくなったら、おなかを鉄棒につけたまま後ろへ回る。", "回る間も、体を鉄棒に引きつけておく。"],
     practice: "後ろ振りおりで、後ろへ動く感覚をつかんでから。かならず補助してもらって練習しよう。",
     links: [L_DOGA_MID, L_DOGA_HIGH] },
   { id: "katahiza", cat: "chousen", name: "片ひざかけ回転", level: 3, hard: true,
@@ -480,6 +480,33 @@ function show(screen) {
   window.scrollTo(0, 0);
 }
 
+var navStack = [{ scr: "home", idx: 0 }];
+function pushNav(st) {
+  var top = navStack[navStack.length - 1];
+  if (top && top.scr === st.scr && top.cat === st.cat && top.skill === st.skill) return;
+  st.idx = navStack.length;
+  navStack.push(st);
+  try { history.pushState(st, ""); } catch (e) {}
+}
+function goHome(push) {
+  renderHome(); show("screen-home");
+  if (push !== false) pushNav({ scr: "home" });
+}
+function navRender(st) {
+  if (!st || !st.scr) st = { scr: "home" };
+  if (st.scr === "list") openCat(st.cat, false);
+  else if (st.scr === "detail") openSkill(st.skill, false);
+  else if (st.scr === "routine") openRoutine(false);
+  else if (st.scr === "present") openPresent(false);
+  else { renderHome(); show("screen-home"); }
+}
+window.addEventListener("popstate", function (e) {
+  var st = e.state || { scr: "home", idx: 0 };
+  if (typeof st.idx === "number" && st.idx < navStack.length) navStack.length = st.idx + 1;
+  navRender(st);
+});
+try { history.replaceState(navStack[0], ""); } catch (e) {}
+
 function renderHome() {
   var grid = $("catGrid"); grid.innerHTML = "";
   CATS.forEach(function (c) {
@@ -505,7 +532,7 @@ function renderHome() {
   }
 }
 
-function openCat(catId) {
+function openCat(catId, push) {
   currentCat = CATS.filter(function (c) { return c.id === catId; })[0];
   $("listTitle").textContent = currentCat.title;
   $("listDesc").textContent = currentCat.desc;
@@ -526,6 +553,7 @@ function openCat(catId) {
     box.appendChild(rb);
   }
   show("screen-list");
+  if (push !== false) pushNav({ scr: "list", cat: catId });
 }
 
 
@@ -542,7 +570,7 @@ function loadRoutine() {
   return { nobori: null, naka: null, oriru: null };
 }
 function saveRoutine() { try { localStorage.setItem(ROUTINE_KEY, JSON.stringify(routine)); } catch (e) {} }
-function openRoutine() { pickingSlot = null; renderRoutine(); show("screen-routine"); }
+function openRoutine(push) { pickingSlot = null; renderRoutine(); show("screen-routine"); if (push !== false) pushNav({ scr: "routine" }); }
 function renderRoutine() {
   var html = "<h2>連続わざをつくろう</h2>";
   html += '<p class="sub">「のぼり方」「なかの技」「おり方」を1つずつ選ぶと、発表用の連続わざができるよ。</p>';
@@ -575,7 +603,7 @@ function renderRoutine() {
   $("presentBtn").addEventListener("click", function () { if (routine.nobori && routine.naka && routine.oriru) { beep("start"); openPresent(); } });
   $("routineClear").addEventListener("click", function () { beep("click"); routine = { nobori: null, naka: null, oriru: null }; saveRoutine(); pickingSlot = null; renderRoutine(); });
 }
-function openPresent() {
+function openPresent(push) {
   var ids = [routine.nobori, routine.naka, routine.oriru];
   var labels = ["のぼり方", "なかの技", "おり方"];
   var html = '<h2 class="present-title">わたしの連続わざ</h2><div class="psteps">';
@@ -588,9 +616,10 @@ function openPresent() {
   html += '</div><p class="sub" style="text-align:center;margin-top:12px">この順番で練習して、発表しよう。難しい技は、先生や大人の補助のもとで。</p>';
   $("presentCard").innerHTML = html;
   show("screen-present");
+  if (push !== false) pushNav({ scr: "present" });
 }
 
-function openSkill(skillId) {
+function openSkill(skillId, push) {
   currentSkill = SKILLS.filter(function (s) { return s.id === skillId; })[0];
   var s = currentSkill;
   var html = "";
@@ -626,20 +655,21 @@ function openSkill(skillId) {
   $("doneBtn").addEventListener("click", function () {
     if (store.done[s.id]) { delete store.done[s.id]; beep("click"); }
     else { store.done[s.id] = true; beep("correct"); }
-    saveStore(); openSkill(s.id); renderHome();
+    saveStore(); openSkill(s.id, false); renderHome();
   });
   $("countBtn").addEventListener("click", function () {
     store.counts[s.id] = (store.counts[s.id] || 0) + 1;
-    saveStore(); beep("practice"); openSkill(s.id); renderHome();
+    saveStore(); beep("practice"); openSkill(s.id, false); renderHome();
   });
   show("screen-detail");
+  if (push !== false) pushNav({ scr: "detail", skill: skillId });
 }
 
-$("backHome1").addEventListener("click", function () { beep("click"); renderHome(); show("screen-home"); });
+$("backHome1").addEventListener("click", function () { beep("click"); goHome(); });
 $("backList").addEventListener("click", function () { beep("click"); if (currentCat) openCat(currentCat.id); });
 $("backFromRoutine").addEventListener("click", function () { beep("click"); openCat("kumiawase"); });
 $("backFromPresent").addEventListener("click", function () { beep("click"); openRoutine(); });
-$("homeBtn").addEventListener("click", function () { beep("click"); renderHome(); show("screen-home"); });
+$("homeBtn").addEventListener("click", function () { beep("click"); goHome(); });
 function renderSoundBtn() { $("soundBtn").textContent = settings.sound ? "🔊 音 ON" : "🔇 音 OFF"; }
 $("soundBtn").addEventListener("click", function () { settings.sound = !settings.sound; saveSettings(); renderSoundBtn(); if (settings.sound) beep("click"); });
 renderSoundBtn();
