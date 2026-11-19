@@ -308,7 +308,7 @@
   </section>
 
   <footer class="src">
-    出典：スポーツ庁「小学校体育の動画資料 ～器械・器具を使っての運動遊び、器械運動～」「小学校体育（運動領域）指導の手引」／ NHK for School「はりきり体育ノ介」／ 滋賀県教育委員会「鉄棒を使った運動遊び」。技のサムネイル画像は、スポーツ庁「小学校体育の動画資料」のイラスト部分を切り取って表示しています。動画と資料は、各公式ページへのリンクで開きます。このページの説明文はTT-senseiのオリジナルです。記録は、この端末の中にだけ保存されます。
+    出典：スポーツ庁「小学校体育の動画資料」「小学校体育（運動領域）指導の手引」／ NHK for School「はりきり体育ノ介」／ 滋賀県教育委員会「鉄棒を使った運動遊び」／ 岡山県教育委員会「学校体育実技指導資料」。技のサムネイル画像は、スポーツ庁資料のイラスト部分を切り取ったものです。動画・資料は公式ページへのリンクで開きます。説明文はTT-senseiのオリジナルです。記録は、この端末の中にだけ保存されます。
   </footer>
 </div>
 
@@ -365,6 +365,10 @@ var SKILLS = [
   { id: "asinuki", cat: "nareyou", name: "足ぬき回り", level: 2, hard: false, watch: true,
     points: ["ぶら下がったまま、両足をそろえて手の間から前に抜き、後ろへ回して下りる。", "回る間も鉄棒をにぎり続け、最後は足の裏で静かに着地する。"],
     practice: "片足ずつ抜く練習から始めよう。「抜く→戻す」を繰り返すと慣れてくる。",
+    links: [L_DOGA_LOW, L_SHIGA] },
+  { id: "chikyu", cat: "nareyou", name: "地球回り", level: 2, hard: false, watch: true,
+    points: ["鉄棒の下で、両手を交差させて、鉄棒をしっかりにぎる。", "足を浮かせて、体を水平に半回転させる。回る間も手は離さない。"],
+    practice: "足をつけたまま、小さく回る練習から始めよう。慣れてきたら、足を浮かせて半回転に挑戦。岡山県の体育資料に載っている補助運動だよ。",
     links: [L_DOGA_LOW, L_SHIGA] },
   { id: "maemawari", cat: "kihon", name: "前回りおり", level: 2, hard: false,
     points: ["支えた姿勢から、おなかを鉄棒につけたまま、体の重心を前に移して回り始める。", "あごを引いて背中を丸め、回り終わったら足の裏で静かに着地する。"],
@@ -430,8 +434,8 @@ var OVERRIDE = {
 
 function skillById(id) { return SKILLS.filter(function (x) { return x.id === id; })[0]; }
 var NEXT = {
-  burasagari: ["tsubame", "futonhoshi"], tsubame: ["maemawari"], futonhoshi: ["dangomushi"],
-  dangomushi: ["asinuki"], asinuki: ["maemawari"], maemawari: ["kakaekomi", "ushirofuri"],
+  burasagari: ["tsubame", "futonhoshi", "chikyu"], tsubame: ["maemawari"], futonhoshi: ["dangomushi"],
+  dangomushi: ["asinuki"], chikyu: ["asinuki"], asinuki: ["maemawari"], maemawari: ["kakaekomi", "ushirofuri"],
   ushirofuri: ["kouhou"], kakaekomi: ["zenpou"], hizakake: ["sakaagari"], sakaagari: ["katahiza"],
   zenpou: ["kouhou"], kouhou: ["katahiza"], katahiza: []
 };
