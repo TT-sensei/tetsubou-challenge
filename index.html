@@ -133,6 +133,7 @@
     #skillList { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
     .dgrid { display: grid; grid-template-columns: 1.15fr .85fr; gap: 6px 22px; align-items: start; }
   }
+  ruby rt { font-size: .45em; color: #6486a0; font-weight: 600; }
   .guide.mini .bubble { display: none; }
   .guide.mini img { width: 54px; height: 54px; border-width: 2px; }
   #guideMini { position: absolute; top: -8px; right: -2px; width: 28px; height: 28px; border-radius: 50%; border: 2px solid #fff; background: #7b97ab; color: #fff; font-weight: 900; cursor: pointer; line-height: 1; z-index: 3; }
@@ -167,46 +168,46 @@
   #progText { font-size: 15px; font-weight: 700; white-space: nowrap; }
   .progmini .progbar { width: 180px; margin: 0; }
   @media (min-width: 900px) {
-    .wrap { padding: 10px 14px 14px; }
-    header.top { padding: 8px 14px; margin-bottom: 10px; }
+    .wrap { padding: 10px 14px 10px; }
+    header.top { padding: 8px 14px; margin-bottom: 8px; }
     header.top h1 { font-size: 25px; }
     header.top .sub { font-size: 13px; }
     .hbtn { min-height: 44px; padding: 7px 14px; }
-    #screen-home { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; grid-template-areas: "hero safety" "cats cats" "srcs srcs"; }
+    #screen-home { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; grid-template-areas: "hero safety" "cats cats" "srcs srcs"; }
     #screen-home .card { margin-bottom: 0; }
     #screen-home .hero { grid-area: hero; padding: 10px 12px; display: flex; align-items: center; gap: 12px; }
-    #screen-home .hero img { width: auto; height: 118px; flex: none; margin: 0; }
-    #screen-home .hero p { font-size: 13px; line-height: 1.5; margin: 0; flex: 1; }
-    #screen-home .safety { grid-area: safety; padding: 10px 16px; }
-    #screen-home .safety h2 { font-size: 18px; margin-bottom: 2px; }
+    #screen-home .hero img { width: auto; height: 106px; flex: none; margin: 0; }
+    #screen-home .hero p { font-size: 13px; line-height: 1.45; margin: 0; flex: 1; }
+    #screen-home .safety { grid-area: safety; padding: 8px 16px; }
+    #screen-home .safety h2 { font-size: 18px; margin-bottom: 0; }
     #screen-home .safety ul { display: grid; grid-template-columns: 1fr 1fr; column-gap: 16px; }
-    #screen-home .safety li { font-size: 14px; line-height: 1.4; padding: 3px 0 3px 28px; }
+    #screen-home .safety li { font-size: 13.5px; line-height: 1.35; padding: 2px 0 2px 28px; }
     #screen-home .safety li::before { top: 3px; width: 19px; height: 19px; line-height: 19px; font-size: 12px; }
-    #screen-home .cats { grid-area: cats; padding: 10px 14px; }
+    #screen-home .cats { grid-area: cats; padding: 8px 14px; }
     #screen-home .cats .sec { font-size: 19px; }
-    #screen-home .catgrid { grid-template-columns: repeat(4, 1fr); gap: 9px; margin-top: 7px; }
-    #screen-home .catcard { min-height: 0; padding: 9px 11px; }
+    #screen-home .catgrid { grid-template-columns: repeat(4, 1fr); gap: 8px; margin-top: 6px; }
+    #screen-home .catcard { min-height: 0; padding: 7px 11px; }
     #screen-home .catcard .ct { font-size: 17px; }
-    #screen-home .catcard .cd { font-size: 12px; line-height: 1.4; margin-top: 2px; }
+    #screen-home .catcard .cd { font-size: 12px; line-height: 1.35; margin-top: 2px; }
     #screen-home .catcard .cp { font-size: 12px; margin-top: 4px; padding: 1px 8px; }
-    #screen-home .donelist { margin-top: 7px; font-size: 13.5px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-    #screen-home .srcs { grid-area: srcs; padding: 10px 14px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 7px; }
+    #screen-home .donelist { margin-top: 6px; font-size: 13.5px; line-height: 1.3; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    #screen-home .srcs { grid-area: srcs; padding: 8px 14px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 7px; }
     #screen-home .srcs .sec { font-size: 19px; margin-bottom: 0; grid-column: 1 / -1; }
-    #screen-home .srclink { margin-bottom: 0; padding: 6px 10px; font-size: 13.5px; }
+    #screen-home .srclink { margin-bottom: 0; padding: 5px 10px; font-size: 13.5px; }
     #screen-home .srclink small { font-size: 11px; line-height: 1.35; }
-    footer.src { font-size: 11px; line-height: 1.45; padding-right: 400px; }
+    footer.src { font-size: 11px; line-height: 1.4; padding-right: 400px; }
     .backbtn { margin-bottom: 8px; min-height: 44px; padding: 8px 16px; }
     .card.detail { padding: 12px 16px; }
     .ddgrid { display: grid; grid-template-columns: 396px 1fr; gap: 4px 22px; align-items: start; }
     .dleft .thumb-wrap { margin: 0 0 6px; }
-    .dleft .thumb-wrap img { width: 100%; height: 200px; object-fit: contain; }
+    .dleft .thumb-wrap img { width: 100%; height: 192px; object-fit: contain; }
     .dleft .linkbtn { padding: 5px 10px; min-height: 40px; margin-bottom: 6px; font-size: 14.5px; }
     #detailCard > h2 { display: inline; }
     #detailCard > .lvline { display: inline-block; margin: 2px 0 6px 14px; }
     .dleft .linkbtn small { font-size: 11.5px; line-height: 1.3; }
     .detail h2 { font-size: 25px; }
-    .detail h3 { font-size: 17px; margin: 8px 0 4px; }
-    .detail ul { font-size: 16px; }
+    .detail h3 { font-size: 17px; margin: 6px 0 3px; }
+    .detail ul { font-size: 16px; line-height: 1.45; }
     .detail ul li { margin-bottom: 4px; }
     .detail .lvline { margin-bottom: 6px; }
     .linkbtn { padding: 9px 10px; min-height: 48px; margin-bottom: 6px; font-size: 16px; }
@@ -214,7 +215,7 @@
     .bigcheck, .countbtn { min-height: 54px; padding: 11px; }
     .dright .checkarea { flex-wrap: nowrap; }
     .dright .bigcheck, .dright .countbtn { flex: 1 1 0; }
-    .hardnote { margin-bottom: 6px; padding: 8px 12px; }
+    .hardnote { margin-bottom: 6px; padding: 7px 12px; }
     .watchnote { margin: 6px 0; padding: 8px 12px; }
     .slotrow { padding: 10px 12px; margin: 8px 0; display: grid; grid-template-columns: 126px 1fr; column-gap: 12px; align-items: start; }
     .slotlabel { margin: 13px 0 0; font-size: 16px; }
@@ -238,6 +239,7 @@
       <div class="sub">体育・器械運動（鉄棒）｜自分に合った<ruby>技<rt>わざ</rt></ruby>を選んで、お手本動画でポイントをつかもう</div>
     </div>
     <button class="hbtn" id="soundBtn" type="button">🔊 音 ON</button>
+    <button class="hbtn" id="furiBtn" type="button">ふりがな ON</button>
     <button class="hbtn" id="homeBtn" type="button">🏠 トップ</button>
   </header>
 
@@ -474,12 +476,12 @@ SKILLS.forEach(function (s) { var o = OVERRIDE[s.id]; if (o) { s.thumb = o.thumb
 var STORE_KEY = "tetsubouChallenge.v1";
 var SET_KEY = "tetsubouChallenge.settings.v1";
 var store = { done: {}, counts: {} };
-var settings = { sound: true };
+var settings = { sound: true, furigana: true };
 try {
   var raw = localStorage.getItem(STORE_KEY);
   if (raw) { var p = JSON.parse(raw); if (p && p.done) store.done = p.done; if (p && p.counts) store.counts = p.counts; }
   var raw2 = localStorage.getItem(SET_KEY);
-  if (raw2) { var p2 = JSON.parse(raw2); if (p2 && typeof p2.sound === "boolean") settings.sound = p2.sound; }
+  if (raw2) { var p2 = JSON.parse(raw2); if (p2 && typeof p2.sound === "boolean") settings.sound = p2.sound; if (p2 && typeof p2.furigana === "boolean") settings.furigana = p2.furigana; if (p2 && typeof p2.guideMini === "boolean") settings.guideMini = p2.guideMini; }
 } catch (e) {}
 function saveStore() { try { localStorage.setItem(STORE_KEY, JSON.stringify(store)); } catch (e) {} }
 function saveSettings() { try { localStorage.setItem(SET_KEY, JSON.stringify(settings)); } catch (e) {} }
@@ -706,6 +708,113 @@ $("backFromPresent").addEventListener("click", function () { beep("click"); open
 $("homeBtn").addEventListener("click", function () { beep("click"); goHome(); });
 function renderSoundBtn() { $("soundBtn").textContent = settings.sound ? "🔊 音 ON" : "🔇 音 OFF"; }
 $("soundBtn").addEventListener("click", function () { settings.sound = !settings.sound; saveSettings(); renderSoundBtn(); if (settings.sound) beep("click"); });
+
+var FURI_DICT = {
+  "前方支持回転": "ぜんぽうしじかいてん", "後方支持回転": "こうほうしじかいてん",
+  "片ひざかけ回転": "かたひざかけかいてん", "両ひざかけ倒立下り": "りょうひざかけとうりつおり",
+  "前方ももかけ回転": "ぜんぽうももかけかいてん", "後方ももかけ回転": "こうほうももかけかいてん",
+  "かかえこみ後ろ回り": "かかえこみうしろまわり", "かかえこみ前回り": "かかえこみまえまわり",
+  "ひざかけふり上がり": "ひざかけふりあがり", "両ひざかけ": "りょうひざかけ",
+  "転向前下り": "てんこうまえおり", "前回りおり": "まえまわりおり", "後ろ振りおり": "うしろふりおり",
+  "足ぬき回り": "あしぬきまわり", "逆上がり": "さかあがり", "地球回り": "ちきゅうまわり",
+  "後ろ回り": "うしろまわり", "前回り": "まえまわり", "支持回転": "しじかいてん",
+  "教育委員会": "きょういくいいんかい", "滋賀県": "しがけん", "岡山県": "おかやまけん",
+  "小学校": "しょうがっこう", "低学年": "ていがくねん", "中学年": "ちゅうがくねん", "高学年": "こうがくねん",
+  "スポーツ庁": "スポーツちょう", "運動遊び": "うんどうあそび", "指導の手引": "しどうのてびき",
+  "足の裏": "あしのうら", "練習方法": "れんしゅうほうほう", "難易度": "なんいど",
+  "鉄棒": "てつぼう", "器械": "きかい", "器具": "きぐ", "運動": "うんどう", "体育": "たいいく",
+  "安全": "あんぜん", "約束": "やくそく", "練習": "れんしゅう", "方法": "ほうほう",
+  "先生": "せんせい", "大人": "おとな", "確認": "かくにん", "場所": "ばしょ", "周り": "まわり",
+  "順番": "じゅんばん", "記録": "きろく", "学習": "がくしゅう", "動画": "どうが", "資料": "しりょう",
+  "公式": "こうしき", "挑戦": "ちょうせん", "姿勢": "しせい", "着地": "ちゃくち", "補助": "ほじょ",
+  "両手": "りょうて", "両足": "りょうあし", "片足": "かたあし", "片手": "かたて", "片方": "かたほう",
+  "一方": "いっぽう", "自分": "じぶん", "得意": "とくい", "逆さ": "さかさ", "安定": "あんてい",
+  "地面": "じめん", "前後": "ぜんご", "左右": "さゆう", "水平": "すいへい", "半回転": "はんかいてん",
+  "交差": "こうさ", "一人": "ひとり", "無理": "むり", "前方": "ぜんぽう", "後方": "こうほう",
+  "支持": "しじ", "回転": "かいてん", "倒立": "とうりつ", "地球": "ちきゅう", "実技": "じつぎ",
+  "指導": "しどう", "領域": "りょういき", "手本": "てほん", "回転技": "かいてんわざ",
+  "発展技": "はってんわざ", "学年": "がくねん", "資料室": "しりょうしつ", "説明文": "せつめいぶん",
+  "出典": "しゅってん", "画像": "がぞう", "部分": "ぶぶん", "端末": "たんまつ", "保存": "ほぞん",
+  "親指": "おやゆび", "目標": "もくひょう", "最後": "さいご", "重心": "じゅうしん",
+  "前転": "ぜんてん", "後転": "ごてん", "候補": "こうほ", "直接": "ちょくせつ", "活動": "かつどう",
+  "全部": "ぜんぶ", "目安": "めやす", "今日": "きょう", "回数": "かいすう", "最初": "さいしょ",
+  "上達": "じょうたつ", "近道": "ちかみち", "時間": "じかん", "背中": "せなか", "途中": "とちゅう",
+  "基本": "きほん", "絶対": "ぜったい", "感覚": "かんかく", "画面": "がめん", "連続": "れんぞく",
+  "入口": "いりぐち", "一覧": "いちらん", "教材": "きょうざい", "発表": "はっぴょう",
+  "必ず": "かならず", "勢い": "いきおい", "振り上げ": "ふりあげ", "引きつけ": "ひきつけ",
+  "引き寄せ": "ひきよせ", "近づけ": "ちかづけ", "踏み込み": "ふみこみ", "踏み切": "ふみき",
+  "支え": "ささえ", "押し": "おし", "倒れ": "たおれ", "外し": "はずし", "離さ": "はなさ",
+  "浮かせ": "うかせ", "丸ま": "まるま", "丸め": "まるめ", "回る": "まわる", "使っ": "つか",
+  "選ぶ": "えらぶ", "選んで": "えらんで", "選び": "えらび", "振る": "ふる",
+  "高い": "たかい", "低い": "ひくい", "難しい": "むずかしい", "静か": "しずか",
+  "大きく": "おおきく", "小さく": "ちいさく", "真上": "まうえ", "組み合わせ": "くみあわせ",
+  "確か": "たしか", "待って": "まって", "待つ": "まつ", "高さ": "たかさ",
+  "慣れ": "なれ", "下り": "おり", "上が": "あが", "振って": "ふって", "回って": "まわって", "始め": "はじめ",
+  "合わせ": "あわせ", "合った": "あった", "選べる": "えらべる",
+  "守ろう": "まもろう", "守る": "まもる", "行う": "おこなう", "使う": "つかう", "知って": "しって",
+  "頭": "あたま", "手": "て", "足": "あし", "体": "からだ", "力": "ちから", "背": "せ", "見": "み"
+};
+var FURI_KEYS = Object.keys(FURI_DICT).sort(function (a, b) { return b.length - a.length; });
+function furiTextNode(node) {
+  var text = node.nodeValue, bestIdx = -1, bestKey = null, i, k, idx;
+  for (i = 0; i < FURI_KEYS.length; i++) {
+    k = FURI_KEYS[i]; idx = text.indexOf(k);
+    if (idx >= 0 && (bestIdx < 0 || idx < bestIdx || (idx === bestIdx && k.length > bestKey.length))) { bestIdx = idx; bestKey = k; }
+  }
+  if (bestIdx < 0) return;
+  var parent = node.parentNode; if (!parent) return;
+  var before = text.slice(0, bestIdx), after = text.slice(bestIdx + bestKey.length);
+  var ruby = document.createElement("ruby");
+  ruby.textContent = bestKey;
+  var rt = document.createElement("rt");
+  rt.textContent = FURI_DICT[bestKey];
+  ruby.appendChild(rt);
+  if (before) parent.insertBefore(document.createTextNode(before), node);
+  parent.insertBefore(ruby, node);
+  var afterNode = document.createTextNode(after);
+  parent.insertBefore(afterNode, node);
+  parent.removeChild(node);
+  if (after) furiTextNode(afterNode);
+}
+function applyFuri() {
+  if (!settings.furigana) return;
+  var walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, {
+    acceptNode: function (n) {
+      if (!n.nodeValue || !/[一-龯]/.test(n.nodeValue)) return NodeFilter.FILTER_REJECT;
+      var p = n.parentNode;
+      while (p && p !== document.body) {
+        var t = p.tagName;
+        if (t === "RUBY" || t === "RT" || t === "SCRIPT" || t === "STYLE") return NodeFilter.FILTER_REJECT;
+        p = p.parentNode;
+      }
+      return NodeFilter.FILTER_ACCEPT;
+    }
+  });
+  var nodes = [];
+  while (walker.nextNode()) nodes.push(walker.currentNode);
+  nodes.forEach(furiTextNode);
+}
+function removeFuri() {
+  document.querySelectorAll("ruby").forEach(function (r) {
+    var base = "";
+    r.childNodes.forEach(function (c) { if (c.nodeType === 3) base += c.nodeValue; });
+    if (r.parentNode) r.parentNode.replaceChild(document.createTextNode(base), r);
+  });
+}
+function renderFuriBtn() { $("furiBtn").textContent = settings.furigana ? "ふりがな ON" : "ふりがな OFF"; }
+$("furiBtn").addEventListener("click", function () {
+  settings.furigana = !settings.furigana; saveSettings(); renderFuriBtn();
+  if (settings.furigana) applyFuri(); else removeFuri();
+  beep("click");
+});
+var furiScheduled = false;
+new MutationObserver(function () {
+  if (!settings.furigana || furiScheduled) return;
+  furiScheduled = true;
+  setTimeout(function () { furiScheduled = false; applyFuri(); }, 30);
+}).observe(document.body, { childList: true, subtree: true });
+renderFuriBtn();
+applyFuri();
 renderSoundBtn();
 
 var CHARS = ["riku", "sora", "kai", "saku", "tsuki", "nami"];
