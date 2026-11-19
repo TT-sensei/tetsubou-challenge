@@ -197,10 +197,13 @@
     footer.src { font-size: 11px; line-height: 1.45; padding-right: 400px; }
     .backbtn { margin-bottom: 8px; min-height: 44px; padding: 8px 16px; }
     .card.detail { padding: 12px 16px; }
-    .dhead { display: grid; grid-template-columns: 1fr 248px; gap: 4px 18px; align-items: start; }
-    .dhead.nothumb { grid-template-columns: 1fr; }
-    .dhead .thumb-wrap { margin: 0; }
-    .dhead .thumb-wrap img { height: 140px; object-fit: contain; }
+    .ddgrid { display: grid; grid-template-columns: 396px 1fr; gap: 4px 22px; align-items: start; }
+    .dleft .thumb-wrap { margin: 0 0 6px; }
+    .dleft .thumb-wrap img { width: 100%; height: 200px; object-fit: contain; }
+    .dleft .linkbtn { padding: 5px 10px; min-height: 40px; margin-bottom: 6px; font-size: 14.5px; }
+    #detailCard > h2 { display: inline; }
+    #detailCard > .lvline { display: inline-block; margin: 2px 0 6px 14px; }
+    .dleft .linkbtn small { font-size: 11.5px; line-height: 1.3; }
     .detail h2 { font-size: 25px; }
     .detail h3 { font-size: 17px; margin: 8px 0 4px; }
     .detail ul { font-size: 16px; }
@@ -209,8 +212,8 @@
     .linkbtn { padding: 9px 10px; min-height: 48px; margin-bottom: 6px; font-size: 16px; }
     .linkbtn small { font-size: 12px; line-height: 1.3; }
     .bigcheck, .countbtn { min-height: 54px; padding: 11px; }
-    .dside .checkarea { flex-wrap: nowrap; }
-    .dside .bigcheck, .dside .countbtn { flex: 1 1 0; font-size: 15px; padding: 9px 6px; min-height: 52px; }
+    .dright .checkarea { flex-wrap: nowrap; }
+    .dright .bigcheck, .dright .countbtn { flex: 1 1 0; }
     .hardnote { margin-bottom: 6px; padding: 8px 12px; }
     .watchnote { margin: 6px 0; padding: 8px 12px; }
     .slotrow { padding: 10px 12px; margin: 8px 0; display: grid; grid-template-columns: 126px 1fr; column-gap: 12px; align-items: start; }
@@ -591,14 +594,17 @@ function openSkill(skillId) {
   currentSkill = SKILLS.filter(function (s) { return s.id === skillId; })[0];
   var s = currentSkill;
   var html = "";
-  html += '<div class="dhead' + (s.thumb ? "" : " nothumb") + '"><div class="dhead-l"><h2>' + s.name + "</h2>";
+  html += "<h2>" + s.name + "</h2>";
   html += '<div class="lvline">難易度の目安：' + levelDots(s.level) + "</div>";
   if (s.hard) html += '<div class="hardnote">⚠ この技は、先生や大人の見ているところで、補助をしてもらって練習しましょう。一人で無理に挑戦しないこと。</div>';
   if (s.watch) html += '<div class="watchnote">👀 この技は、先生に見てもらってから練習しよう。</div>';
-  html += "</div>";
+  html += '<div class="ddgrid"><div class="dleft">';
   if (s.thumb) html += '<div class="thumb-wrap"><img src="assets/thumbs/' + s.thumb + '.webp" alt="' + s.name + 'の動きのイラスト"><div class="cap">スポーツ庁「小学校体育の動画資料」のイラストより</div></div>';
-  html += "</div>";
-  html += '<div class="dgrid"><div class="dmain"><h3>できるポイント</h3><ul>';
+  html += '<h3>お手本の動画・資料（公式ページ）</h3>';
+  s.links.forEach(function (l) {
+    html += '<a class="linkbtn ' + l.kind + '" href="' + l.url + '" target="_blank" rel="noopener">▶ ' + l.label + "<small>" + l.note + "</small></a>";
+  });
+  html += '</div><div class="dright"><h3>できるポイント</h3><ul>';
   s.points.forEach(function (pt) { html += "<li>" + pt + "</li>"; });
   html += "</ul>";
   html += "<h3>できないときの練習方法</h3><ul><li>" + s.practice + "</li></ul>";
@@ -608,10 +614,6 @@ function openSkill(skillId) {
     nx.forEach(function (id) { var t = skillById(id); html += '<button type="button" class="nextchip" data-next="' + id + '">' + (t.thumb ? '<img src="assets/thumbs/' + t.thumb + '.webp" alt="">' : "") + t.name + "</button>"; });
     html += "</div><p class=\"nexnote\">順番は決まっていないよ。やってみたい技を選んでね。</p>";
   }
-  html += '</div><div class="dside"><h3>お手本の動画・資料（公式ページ）</h3>';
-  s.links.forEach(function (l) {
-    html += '<a class="linkbtn ' + l.kind + '" href="' + l.url + '" target="_blank" rel="noopener">▶ ' + l.label + "<small>" + l.note + "</small></a>";
-  });
   html += "<h3>練習チェック</h3>";
   html += '<div class="checkarea">' +
     '<button type="button" class="bigcheck' + (store.done[s.id] ? " on" : "") + '" id="doneBtn">' + (store.done[s.id] ? "⭐ できた！（記録ずみ）" : "☆ できた！を記録する") + "</button>" +
