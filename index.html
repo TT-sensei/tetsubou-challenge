@@ -130,7 +130,7 @@
   .nextchip img { width: 52px; height: 34px; object-fit: cover; border-radius: 8px; }
   .nexnote { font-size: 13px; color: #7b97ab; margin: 6px 0 0; }
   @media (min-width: 900px) {
-    #skillList { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    #skillList { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
     .dgrid { display: grid; grid-template-columns: 1.15fr .85fr; gap: 6px 22px; align-items: start; }
   }
   .guide.mini .bubble { display: none; }
@@ -362,6 +362,10 @@ var SKILLS = [
     points: ["両手で鉄棒をにぎってぶら下がり、両足を鉄棒にかけて、ひざを曲げて体を小さく丸める。", "逆さの感覚に慣れるための技。逆さの姿勢では、手を絶対に離さない。"],
     practice: "足をかけるだけ、両足をかけて短い時間キープ、の順に少しずつ進めよう。",
     links: [L_DOGA_LOW, L_SHIGA] },
+  { id: "koumori", cat: "nareyou", name: "こうもり", level: 2, hard: false, watch: true,
+    points: ["両足のひざの裏を鉄棒にかけ、体を逆さにしてぶら下がる。", "ひざをしっかり曲げてかける。慣れるまでは、手も鉄棒に添えておこう。"],
+    practice: "低い鉄棒で、ダンゴ虫ができたら挑戦してみよう。頭をぶつけないよう、先生に見てもらいながら。",
+    links: [L_DOGA_LOW] },
   { id: "asinuki", cat: "nareyou", name: "足ぬき回り", level: 2, hard: false, watch: true,
     points: ["ぶら下がったまま、両足をそろえて手の間から前に抜き、後ろへ回して下りる。", "回る間も鉄棒をにぎり続け、最後は足の裏で静かに着地する。"],
     practice: "片足ずつ抜く練習から始めよう。「抜く→戻す」を繰り返すと慣れてくる。",
@@ -374,6 +378,10 @@ var SKILLS = [
     points: ["支えた姿勢から、おなかを鉄棒につけたまま、体の重心を前に移して回り始める。", "あごを引いて背中を丸め、回り終わったら足の裏で静かに着地する。"],
     practice: "ゆっくり前に傾ける練習から。先生に見てもらいながら回ってみよう（補助のしかたは、先生に確認しよう）。",
     links: [L_DOGA_MID, L_DOGA_HIGH] },
+  { id: "tenkou", cat: "kihon", name: "転向前下り", level: 2, hard: false,
+    points: ["支えた姿勢から、おなかを鉄棒につけたまま前へ回り、そのまま回転して下りる。", "あごを引いて背中を丸め、回り終わったら足の裏で静かに着地する。"],
+    practice: "前回りおりが安定してから。回転が大きくなるので、先生に見てもらいながら練習しよう。",
+    links: [L_DOGA_MID] },
   { id: "ushirofuri", cat: "kihon", name: "後ろ振りおり", level: 2, hard: false,
     points: ["支えた姿勢から、体を後ろに振って下りる技。", "手を離すのは、体が後ろに振れてから。着地はひざを曲げて、静かに。"],
     practice: "支えたまま前後に小さく振る練習で、手を離すタイミングをつかもう。",
@@ -402,6 +410,22 @@ var SKILLS = [
     points: ["片方のひざを鉄棒にかけて回る回転技。前回り（前方）と、後ろ回り（後方）がある。", "かけるひざを軸にして、体を鉄棒に近づけたまま回る。"],
     practice: "ひざかけふり上がりが安定してから。かならず補助してもらって練習しよう。",
     links: [L_DOGA_MID, L_DOGA_HIGH] },
+  { id: "kakaekomiushiro", cat: "chousen", name: "かかえこみ後ろ回り", level: 3, hard: true,
+    points: ["ひざを胸に引き寄せて小さく丸まり、その勢いで後ろへ回る。", "回る途中も鉄棒をしっかりにぎり続け、おなかを鉄棒に近づけておく。"],
+    practice: "マット運動の後転で「丸まる」感覚を先に練習しよう。後ろ振りおりが安定してから挑戦。",
+    links: [L_DOGA_MID] },
+  { id: "ryouhiza", cat: "chousen", name: "両ひざかけ倒立下り", level: 3, hard: true,
+    points: ["両足のひざの裏を鉄棒にかけて逆さにぶら下がり、体を前後に振る。", "振りの勢いで地面に手をつき、ひざを外して、倒立の姿勢を通って下りる。"],
+    practice: "こうもりやダンゴ虫で、逆さの姿勢に慣れてから。着地する場所を確かめてから練習しよう。",
+    links: [L_DOGA_MID] },
+  { id: "momokakezen", cat: "chousen", name: "前方ももかけ回転", level: 3, hard: true,
+    points: ["片足のももを鉄棒にかけて、前へ回る回転技。", "かけるももを軸にして、体を鉄棒に近づけたまま回る。"],
+    practice: "片ひざかけ回転が安定してから。かならず補助してもらって練習しよう。",
+    links: [L_DOGA_MID] },
+  { id: "momokakekou", cat: "chousen", name: "後方ももかけ回転", level: 3, hard: true,
+    points: ["片足のももを鉄棒にかけて、後ろへ回る回転技。", "かけるももを軸にして、体を鉄棒に近づけたまま回る。"],
+    practice: "前方ももかけ回転が安定してから。かならず補助してもらって練習しよう。",
+    links: [L_DOGA_MID] },
   { id: "kumiawase", cat: "kumiawase", name: "できる技を組み合わせる", level: 2, hard: false, activity: true,
     points: ["できるようになった技を、2〜3つ続けて行ってみよう。（例）ツバメ→前回りおり、ふとんほし→足ぬき回り。", "技と技の「つなぎ」の動きも、自分で考えてみよう。"],
     practice: "まずは2つの技の組み合わせから。順番を決めて、ゆっくりつないでみよう。",
@@ -429,15 +453,21 @@ var OVERRIDE = {
     { label: "動画で見る（補助逆上がり）", url: "https://youtu.be/WHNtpjZcn80", kind: "video", note: "補助をしてもらう練習の動画（高学年資料より）" }] },
   zenpou: { thumb: "zenpou", links: [L_NHK_ZENPOU, YT("EtTdlI32WQ4", NOTE_MID)] },
   kouhou: { thumb: "kouhou", links: [YT("8-QTzlIKTNo", NOTE_MID), L_DOGA_MID] },
-  katahiza: { thumb: "katahiza", links: [YT("JU0biAk4kmA", NOTE_MID + "（前方かたひざかけ回転）"), YT("0_vujGO3_SU", NOTE_MID + "（後方かたひざかけ回転）")] }
+  katahiza: { thumb: "katahiza", links: [YT("JU0biAk4kmA", NOTE_MID + "（前方かたひざかけ回転）"), YT("0_vujGO3_SU", NOTE_MID + "（後方かたひざかけ回転）")] },
+  koumori: { thumb: "koumori", links: [YT("DrkOAt_mHLc", NOTE_LOW), L_DOGA_LOW] },
+  tenkou: { thumb: "tenkou", links: [YT("0mtdLSapCUo", NOTE_MID), L_DOGA_MID] },
+  kakaekomiushiro: { thumb: "kakaekomiushiro", links: [YT("zoUCPt2jCiQ", NOTE_MID), L_DOGA_MID] },
+  ryouhiza: { thumb: "ryouhiza", links: [YT("Ge2iCI5p97U", NOTE_MID), L_DOGA_MID] },
+  momokakezen: { thumb: "momokakezen", links: [YT("dVgzK_8uuHA", NOTE_MID), L_DOGA_MID] },
+  momokakekou: { thumb: "momokakekou", links: [YT("nf4ner17eu8", NOTE_MID), L_DOGA_MID] }
 };
 
 function skillById(id) { return SKILLS.filter(function (x) { return x.id === id; })[0]; }
 var NEXT = {
   burasagari: ["tsubame", "futonhoshi", "chikyu"], tsubame: ["maemawari"], futonhoshi: ["dangomushi"],
-  dangomushi: ["asinuki"], chikyu: ["asinuki"], asinuki: ["maemawari"], maemawari: ["kakaekomi", "ushirofuri"],
-  ushirofuri: ["kouhou"], kakaekomi: ["zenpou"], hizakake: ["sakaagari"], sakaagari: ["katahiza"],
-  zenpou: ["kouhou"], kouhou: ["katahiza"], katahiza: []
+  dangomushi: ["koumori", "asinuki"], koumori: ["asinuki"], chikyu: ["asinuki"], asinuki: ["maemawari"], maemawari: ["kakaekomi", "ushirofuri", "tenkou"], tenkou: ["kakaekomi"],
+  ushirofuri: ["kouhou", "kakaekomiushiro"], kakaekomiushiro: ["kouhou"], kakaekomi: ["zenpou"], hizakake: ["sakaagari"], sakaagari: ["katahiza"],
+  zenpou: ["kouhou"], kouhou: ["katahiza"], katahiza: ["momokakezen", "ryouhiza"], momokakezen: ["momokakekou"], momokakekou: [], ryouhiza: []
 };
 SKILLS.forEach(function (s) { var o = OVERRIDE[s.id]; if (o) { s.thumb = o.thumb; s.links = o.links; } });
 
